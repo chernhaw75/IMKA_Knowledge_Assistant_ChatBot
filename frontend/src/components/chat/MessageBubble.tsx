@@ -1,0 +1,245 @@
+import { useState } from "react"
+import {
+  Bot,
+  Check,
+  Copy,
+  FileText,
+  MessageSquare,
+  Pencil,
+  RotateCcw,
+  ThumbsDown,
+  ThumbsUp,
+  X,
+} from "lucide-react"
+import type { ChatMessage } from "@/lib/types"
+import { cn } from "@/lib/utils"
+
+interface MessageBubbleProps {
+  message: ChatMessage
+  busy?: boolean
+  onFeedback?: (localId: string, rating: "up" | "down") => void
+  onComment?: (localId: string, comment: string) => void
+  onRegenerate?: (localId: string) => void
+  onEditUser?: (localId: string, newContent: string) => void
+}
+
+function IconButton({
+  active,
+  danger,
+  label,
+  onClick,
+  children,
+}: {
+  active?: boolean
+  danger?: boolean
+  label: string
+  onClick: () => void
+  children: React.ReactNode
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      title={label}
+      className={cn(
+        "rounded-md p-1.5 text-muted-foreground hover:bg-accent hover:text-foreground",
+        active && !danger && "bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-400",
+        active && danger && "bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-400",
+      )}
+    >
+      {children}
+    </button>
+  )
+}
+
+export function MessageBubble({ message, busy, onFeedback, onComment, onRegenerate, onEditUser }: MessageBubbleProps) {
+  const [editing, setEditing] = useState(false)
+  const [editDraft, setEditDraft] = useState(message.content)
+  const [commenting, setCommenting] = useState(false)
+  const [commentDraft, setCommentDraft] = useState(message.comment ?? "")
+  const [copied, setCopied] = useState(false)
+
+  function handleCopy() {
+    navigator.clipboard.writeText(message.content)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }
+
+  function submitComment() {
+    if (!commentDraft.trim()) return
+    onComment?.(message.id, commentDraft.trim())
+    setCommenting(false)
+  }
+
+  function submitEdit() {
+    const text = editDraft.trim()
+    if (!text || text === message.content) {
+      setEditing(false)
+      return
+    }
+    onEditUser?.(message.id, text)
+    setEditing(false)
+  }
+
+  if (message.role === "user") {
+    return (
+      <div className="group flex justify-end">
+        <div className="max-w-[80%]">
+          <div className="mb-1 flex items-baseline justify-end gap-2 text-xs text-muted-foreground">
+            <span className="font-medium text-foreground">{message.author}</span>
+            <span>{message.time}</span>
+          </div>
+
+          {editing ? (
+            <div className="rounded-2xl rounded-tr-sm border border-border bg-background p-2">
+              <textarea
+                value={editDraft}
+                onChange={(e) => setEditDraft(e.target.value)}
+                rows={3}
+                autoFocus
+                className="w-full resize-none bg-transparent text-sm text-foreground focus:outline-none"
+              />
+              <div className="mt-1 flex justify-end gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setEditing(false)}
+                  className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-accent"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={submitEdit}
+                  className="rounded-md bg-blue-600 px-2 py-1 text-xs font-medium text-white hover:bg-blue-700"
+                >
+                  Save & resend
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="rounded-2xl rounded-tr-sm bg-blue-600 px-4 py-2.5 text-sm whitespace-pre-wrap text-white">
+                {message.content}
+              </div>
+              <div className="mt-1 flex justify-end opacity-0 transition-opacity group-hover:opacity-100">
+                <IconButton label="Edit and resend" onClick={() => { setEditDraft(message.content); setEditing(true) }}>
+                  <Pencil className="size-3.5" />
+                </IconButton>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="flex gap-3">
+      <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted ring-1 ring-border">
+        <Bot className="size-4 text-foreground" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="mb-1 flex items-baseline gap-2 text-xs text-muted-foreground">
+          <span className="font-medium text-foreground">{message.author}</span>
+          <span>{message.time}</span>
+        </div>
+
+        <div className="space-y-3 text-sm text-foreground">
+          {message.content ? (
+            <p className="font-medium whitespace-pre-wrap">{message.content}</p>
+          ) : (
+            <div className="flex items-center gap-2 py-1 text-muted-foreground">
+              <div className="flex gap-1">
+                <span className="size-1.5 animate-bounce rounded-full bg-muted-foreground [animation-delay:-0.3s]" />
+                <span className="size-1.5 animate-bounce rounded-full bg-muted-foreground [animation-delay:-0.15s]" />
+                <span className="size-1.5 animate-bounce rounded-full bg-muted-foreground" />
+              </div>
+              <span className="text-xs">Thinking...</span>
+            </div>
+          )}
+
+          {message.citations && message.citations.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {message.citations.map((c) => (
+                <span
+                  key={`${c.document_id}-${c.chunk_index}`}
+                  className="flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground"
+                >
+                  <FileText className="size-3" />
+                  {c.document_name}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {message.content && !busy && (
+          <div className="mt-1.5 flex items-center gap-0.5">
+            <IconButton label="Copy" onClick={handleCopy}>
+              {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+            </IconButton>
+            <IconButton
+              label="Good response"
+              active={message.rating === "up"}
+              onClick={() => onFeedback?.(message.id, "up")}
+            >
+              <ThumbsUp className="size-3.5" />
+            </IconButton>
+            <IconButton
+              label="Bad response"
+              active={message.rating === "down"}
+              danger
+              onClick={() => onFeedback?.(message.id, "down")}
+            >
+              <ThumbsDown className="size-3.5" />
+            </IconButton>
+            <IconButton label="Add comment" active={commenting} onClick={() => setCommenting((v) => !v)}>
+              <MessageSquare className="size-3.5" />
+            </IconButton>
+            <IconButton label="Regenerate" onClick={() => onRegenerate?.(message.id)}>
+              <RotateCcw className="size-3.5" />
+            </IconButton>
+          </div>
+        )}
+
+        {message.comment && !commenting && (
+          <p className="mt-1.5 rounded-lg bg-muted px-2.5 py-1.5 text-xs text-muted-foreground">
+            Your feedback: {message.comment}
+          </p>
+        )}
+
+        {commenting && (
+          <div className="mt-1.5 flex items-start gap-1.5">
+            <textarea
+              value={commentDraft}
+              onChange={(e) => setCommentDraft(e.target.value)}
+              autoFocus
+              rows={2}
+              placeholder="What could be improved?"
+              className="flex-1 resize-none rounded-lg border border-border bg-background p-2 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            />
+            <div className="flex flex-col gap-1">
+              <button
+                type="button"
+                onClick={submitComment}
+                className="rounded-md bg-blue-600 p-1.5 text-white hover:bg-blue-700"
+                aria-label="Submit comment"
+              >
+                <Check className="size-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setCommenting(false)}
+                className="rounded-md p-1.5 text-muted-foreground hover:bg-accent"
+                aria-label="Cancel comment"
+              >
+                <X className="size-3.5" />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}

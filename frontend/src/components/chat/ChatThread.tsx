@@ -1,0 +1,90 @@
+import { useState } from "react"
+import { Bot, Mic, Paperclip, Send } from "lucide-react"
+import type { ChatMessage } from "@/lib/types"
+import { MessageBubble } from "@/components/chat/MessageBubble"
+
+interface ChatThreadProps {
+  messages: ChatMessage[]
+  onSend?: (text: string) => void
+  sending?: boolean
+  onFeedback?: (localId: string, rating: "up" | "down") => void
+  onComment?: (localId: string, comment: string) => void
+  onRegenerate?: (localId: string) => void
+  onEditUser?: (localId: string, newContent: string) => void
+}
+
+export function ChatThread({
+  messages,
+  onSend,
+  sending = false,
+  onFeedback,
+  onComment,
+  onRegenerate,
+  onEditUser,
+}: ChatThreadProps) {
+  const [draft, setDraft] = useState("")
+
+  function submit() {
+    const text = draft.trim()
+    if (!text || sending) return
+    onSend?.(text)
+    setDraft("")
+  }
+
+  return (
+    <div className="flex h-full min-h-0 flex-col">
+      <div className="min-h-0 flex-1 space-y-6 overflow-y-auto p-6">
+        {messages.length === 0 && !sending && (
+          <div className="flex h-full flex-col items-center justify-center gap-2 text-center text-muted-foreground">
+            <Bot className="size-8" />
+            <p className="text-sm">Ask a question to get started.</p>
+          </div>
+        )}
+        {messages.map((message) => (
+          <MessageBubble
+            key={message.id}
+            message={message}
+            busy={sending}
+            onFeedback={onFeedback}
+            onComment={onComment}
+            onRegenerate={onRegenerate}
+            onEditUser={onEditUser}
+          />
+        ))}
+      </div>
+
+      <div className="shrink-0 border-t border-border p-4">
+        <div className="flex items-center gap-2 rounded-full border border-border bg-background px-2 py-1.5">
+          <button type="button" className="rounded-full p-1.5 text-muted-foreground hover:bg-accent" aria-label="Attach file">
+            <Paperclip className="size-4" />
+          </button>
+          <input
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") submit()
+            }}
+            type="text"
+            placeholder="Ask anything about maintenance..."
+            className="h-7 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+          />
+          <button type="button" className="rounded-full p-1.5 text-muted-foreground hover:bg-accent" aria-label="Voice input">
+            <Mic className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={submit}
+            disabled={sending || !draft.trim()}
+            className="flex size-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
+            aria-label="Send message"
+          >
+            <Send className="size-4" />
+          </button>
+        </div>
+        <p className="mt-2 text-center text-xs text-muted-foreground">
+          AI responses are generated from your organization's documents. Please verify critical actions.
+        </p>
+      </div>
+    </div>
+  )
+}
