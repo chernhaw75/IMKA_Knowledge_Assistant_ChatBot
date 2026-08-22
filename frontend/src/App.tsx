@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { AuthProvider } from "@/lib/AuthContext"
+import { ChatHistoryProvider } from "@/lib/ChatHistoryContext"
+import { ThemeProvider } from "@/lib/ThemeContext"
 import { RequireAuth } from "@/components/layout/RequireAuth"
 import { AppLayout } from "@/components/layout/AppLayout"
 import { DashboardPage } from "@/pages/DashboardPage"
@@ -11,20 +13,24 @@ import { PlaceholderPage } from "@/pages/PlaceholderPage"
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route element={<RequireAuth />}>
-            <Route element={<AppLayout />}>
-              <Route path="/" element={<DashboardPage />} />
-              <Route path="/chat" element={<ChatPage />} />
-              <Route path="/documents" element={<DocumentsPage />} />
-              <Route path="/sops" element={<PlaceholderPage title="SOPs" />} />
-              <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
-            </Route>
-          </Route>
-        </Routes>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <ChatHistoryProvider>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route element={<RequireAuth />}>
+                <Route element={<AppLayout />}>
+                  <Route path="/" element={<DashboardPage />} />
+                  <Route path="/chat" element={<ChatPage />} />
+                  <Route path="/documents" element={<DocumentsPage />} />
+                  <Route path="/sops" element={<PlaceholderPage title="SOPs" />} />
+                  <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
+                </Route>
+              </Route>
+            </Routes>
+          </ChatHistoryProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }

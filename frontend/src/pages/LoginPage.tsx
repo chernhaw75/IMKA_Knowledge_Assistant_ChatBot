@@ -37,13 +37,24 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
-      <div className="w-full max-w-sm rounded-xl border border-border bg-card p-6">
-        <div className="mb-6 flex flex-col items-center gap-2 text-center">
-          <div className="flex size-10 items-center justify-center rounded-lg bg-blue-600">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden p-4">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-1/2 left-1/2 size-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-3xl"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, oklch(0.5 0.13 200 / 45%), transparent 65%)",
+        }}
+      />
+
+      <div className="glass glow-ring relative w-full max-w-sm rounded-2xl border border-border p-6">
+        <div className="mb-6 flex flex-col items-center gap-3 text-center">
+          <div className="brand-gradient glow-ring flex size-11 items-center justify-center rounded-xl">
             <Wrench className="size-5 text-white" />
           </div>
-          <h1 className="text-lg font-semibold text-foreground">Industrial Maintenance AI</h1>
+          <h1 className="font-display text-lg font-semibold tracking-tight text-foreground">
+            Industrial Maintenance <span className="brand-gradient-text">AI</span>
+          </h1>
           <p className="text-sm text-muted-foreground">
             {mode === "login" ? "Sign in to continue" : "Create an account"}
           </p>
@@ -85,7 +96,7 @@ export function LoginPage() {
           </div>
 
           {error && (
-            <div className="flex items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-700 dark:bg-red-950 dark:text-red-300">
+            <div className="flex items-start gap-2 rounded-lg border border-destructive/25 bg-destructive/10 px-3 py-2 text-xs text-red-600 dark:text-red-300">
               <AlertCircle className="mt-0.5 size-3.5 shrink-0" />
               {error}
             </div>
@@ -94,7 +105,7 @@ export function LoginPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+            className="brand-gradient flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white transition-transform hover:brightness-110 active:scale-[0.99] disabled:opacity-50"
           >
             {submitting && <Loader2 className="size-4 animate-spin" />}
             {mode === "login" ? "Sign in" : "Create account"}
@@ -107,7 +118,7 @@ export function LoginPage() {
             setMode(mode === "login" ? "register" : "login")
             setError(null)
           }}
-          className="mt-4 w-full text-center text-xs font-medium text-blue-600 hover:underline"
+          className="mt-4 w-full text-center text-xs font-medium text-primary hover:underline"
         >
           {mode === "login" ? "Need an account? Register" : "Already have an account? Sign in"}
         </button>

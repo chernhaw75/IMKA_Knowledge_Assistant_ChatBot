@@ -1,4 +1,4 @@
-import { Bell, ChevronDown, Menu, Search } from "lucide-react"
+import { Bell, ChevronDown, PanelLeftClose, PanelLeftOpen, Moon, Search, Sun } from "lucide-react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import {
   DropdownMenu,
@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useAuth } from "@/lib/AuthContext"
+import { useTheme } from "@/lib/ThemeContext"
 
 function initials(name: string) {
   return name
@@ -17,20 +18,30 @@ function initials(name: string) {
     .toUpperCase()
 }
 
-export function TopBar() {
+interface TopBarProps {
+  sidebarCollapsed?: boolean
+  onToggleSidebar?: () => void
+}
+
+export function TopBar({ sidebarCollapsed = false, onToggleSidebar }: TopBarProps) {
   const { user, logout } = useAuth()
+  const { theme, toggleTheme } = useTheme()
 
   return (
-    <header className="flex h-16 shrink-0 items-center gap-4 border-b border-border bg-background px-5">
+    <header className="glass flex h-16 shrink-0 items-center gap-4 border-b border-border px-5">
       <button
         type="button"
-        className="rounded-md p-1.5 text-muted-foreground hover:bg-accent"
-        aria-label="Toggle menu"
+        onClick={onToggleSidebar}
+        className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+        aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+        title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
-        <Menu className="size-5" />
+        {sidebarCollapsed ? <PanelLeftOpen className="size-5" /> : <PanelLeftClose className="size-5" />}
       </button>
 
-      <h1 className="text-lg font-semibold text-foreground">Industrial Maintenance AI</h1>
+      <h1 className="font-display text-lg font-semibold tracking-tight text-foreground">
+        Industrial Maintenance <span className="brand-gradient-text">AI</span>
+      </h1>
 
       <div className="ml-4 flex-1 max-w-md">
         <div className="relative">
@@ -38,12 +49,22 @@ export function TopBar() {
           <input
             type="text"
             placeholder="Search documentation..."
-            className="h-9 w-full rounded-full border-0 bg-muted pl-9 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            className="h-9 w-full rounded-full border border-border/60 bg-muted/70 pl-9 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
           />
         </div>
       </div>
 
       <div className="ml-auto flex items-center gap-4">
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+          title={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+        >
+          {theme === "dark" ? <Sun className="size-5" /> : <Moon className="size-5" />}
+        </button>
+
         <button
           type="button"
           className="relative rounded-md p-1.5 text-muted-foreground hover:bg-accent"

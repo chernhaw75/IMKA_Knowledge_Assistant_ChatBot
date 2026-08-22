@@ -39,7 +39,7 @@ Instructions:
 
 # ── Stage 1: Query Processing ─────────────────────────────────────────────────
 
-def _stage1_process_query(query: str, llm: ChatOpenAI) -> str:
+def _stage1_process_query(query: str, llm: ChatOpenAI, metadata: dict | None = None) -> str:
     """Clean, rewrite, and disambiguate the user query for semantic search."""
     prompt = ChatPromptTemplate.from_messages(
         [
@@ -54,7 +54,10 @@ def _stage1_process_query(query: str, llm: ChatOpenAI) -> str:
         ]
     )
     chain = prompt | llm | StrOutputParser()
-    return chain.invoke({"query": query}).strip()
+    return chain.invoke(
+        {"query": query},
+        config={"run_name": "query_rewrite", "tags": ["rag", "stage1"], "metadata": metadata or {}},
+    ).strip()
 
 
 # ── Stage 2: Retrieval ────────────────────────────────────────────────────────
@@ -143,10 +146,10 @@ def _stage6_build_citations(chunks: list[Document]) -> list[dict]:
 
 # ── Public entry points (stages 1-4+6 upfront, stage 5 token-by-token or invoked) ──
 
-def _prepare_context_sync(query: str) -> tuple[str, list[dict], str]:
+def _prepare_context_sync(query: str, metadata: dict | None = None) -> tuple[str, list[dict], str]:
     """Stages 1-4 + citations (stage 6). Returns (context, citations, rewritten_query)."""
     llm = ChatOpenAI(model=_CHAT_MODEL, temperature=0)
-    rewritten = _stage1_process_query(query, llm)
+    rewritten = _stage1_process_query(query, llm, metadata)
 
     candidates = _stage2_retrieve(rewritten)
     if not candidates:
@@ -158,10 +161,14 @@ def _prepare_context_sync(query: str) -> tuple[str, list[dict], str]:
     return context, citations, rewritten
 
 
-async def prepare_context(query: str) -> tuple[str, list[dict], str]:
-    """Async wrapper for stages 1-4+6, run in a thread pool."""
+async def prepare_context(query: str, metadata: dict | None = None) -> tuple[str, list[dict], str]:
+    """Async wrapper for stages 1-4+6, run in a thread pool.
+
+    `metadata` (e.g. conversation_id, user_id) is attached to LangSmith traces
+    when LANGCHAIN_TRACING_V2 is enabled.
+    """
     loop = asyncio.get_event_loop()
-    return await loop.run_in_executor(None, _prepare_context_sync, query)
+    return await loop.run_in_executor(None, _prepare_context_sync, query, metadata)
 
 
 def build_answer_chain():

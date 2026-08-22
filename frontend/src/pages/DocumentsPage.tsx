@@ -8,10 +8,17 @@ import {
   uploadDocuments,
   type DocumentRecord,
   type HealthResponse,
+  type IngestPipeline,
 } from "@/lib/api"
 import { cn } from "@/lib/utils"
 
 const ACCEPTED_EXTENSIONS = [".pdf", ".txt", ".md", ".docx", ".doc"]
+const DOCLING_ACCEPTED_EXTENSIONS = [".pdf"]
+
+const PIPELINE_OPTIONS: { value: IngestPipeline; label: string; hint: string }[] = [
+  { value: "standard", label: "Standard", hint: "PyPDF + recursive text splitter. PDF, TXT, MD, DOCX." },
+  { value: "docling", label: "Docling (layout-aware)", hint: "Header/table-aware parsing via Docling. PDF only." },
+]
 
 interface MetadataRow {
   id: number
@@ -39,6 +46,7 @@ export function DocumentsPage() {
 
   const [files, setFiles] = useState<File[]>([])
   const [version, setVersion] = useState("1.0")
+  const [pipeline, setPipeline] = useState<IngestPipeline>("standard")
   const [metadataRows, setMetadataRows] = useState<MetadataRow[]>([{ id: nextRowId++, key: "", value: "" }])
 
   const [submitting, setSubmitting] = useState(false)
@@ -89,7 +97,7 @@ export function DocumentsPage() {
         if (row.key.trim()) metadata[row.key.trim()] = row.value
       }
 
-      const response = await uploadDocuments({ files, version, metadata })
+      const response = await uploadDocuments({ files, version, metadata, pipeline })
       setResult({
         type: "success",
         message: `Ingested ${response.total_chunks} chunk${response.total_chunks === 1 ? "" : "s"} from ${response.documents.length} document${response.documents.length === 1 ? "" : "s"}.`,
@@ -119,8 +127,8 @@ export function DocumentsPage() {
   return (
     <div className="grid h-full min-h-0 grid-cols-1 gap-4 overflow-y-auto p-4 lg:grid-cols-[420px_1fr] lg:overflow-hidden">
       <div className="flex min-h-0 flex-col gap-4 lg:overflow-y-auto lg:pr-1">
-        <div className="rounded-xl border border-border bg-card p-4">
-          <h2 className="text-sm font-semibold text-foreground">Data Ingestion Pipeline</h2>
+        <div className="glass rounded-xl border border-border p-4">
+          <h2 className="font-display text-sm font-semibold tracking-tight text-foreground">Data Ingestion Pipeline</h2>
           <p className="mt-1 text-xs text-muted-foreground">
             Upload files, tag them with any metadata you like, then start the ingest pipeline.
           </p>
@@ -136,8 +144,26 @@ export function DocumentsPage() {
             </span>
           </div>
 
+          <div className="mt-4">
+            <label className="text-xs font-medium text-foreground">Ingestion Pipeline</label>
+            <select
+              value={pipeline}
+              onChange={(e) => setPipeline(e.target.value as IngestPipeline)}
+              className="mt-1 h-9 w-full rounded-lg border border-border bg-background px-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            >
+              {PIPELINE_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {PIPELINE_OPTIONS.find((opt) => opt.value === pipeline)?.hint}
+            </p>
+          </div>
+
           <label
-            className="mt-4 flex cursor-pointer flex-col items-center gap-2 rounded-lg border border-dashed border-border px-4 py-6 text-center hover:bg-accent"
+            className="mt-3 flex cursor-pointer flex-col items-center gap-2 rounded-lg border border-dashed border-border px-4 py-6 text-center transition-all hover:border-primary/50 hover:bg-accent hover:glow-ring"
             onDragOver={(e) => e.preventDefault()}
             onDrop={(e) => {
               e.preventDefault()
@@ -146,11 +172,13 @@ export function DocumentsPage() {
           >
             <UploadCloud className="size-6 text-muted-foreground" />
             <span className="text-sm font-medium text-foreground">Choose or drop files</span>
-            <span className="text-xs text-muted-foreground">PDF, TXT, MD, or DOCX</span>
+            <span className="text-xs text-muted-foreground">
+              {pipeline === "docling" ? "PDF only" : "PDF, TXT, MD, or DOCX"}
+            </span>
             <input
               type="file"
               multiple
-              accept={ACCEPTED_EXTENSIONS.join(",")}
+              accept={(pipeline === "docling" ? DOCLING_ACCEPTED_EXTENSIONS : ACCEPTED_EXTENSIONS).join(",")}
               className="hidden"
               onChange={(e) => addFiles(e.target.files)}
             />
@@ -230,7 +258,7 @@ export function DocumentsPage() {
             type="button"
             disabled={files.length === 0 || submitting}
             onClick={handleSubmit}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="brand-gradient mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white transition-transform hover:brightness-110 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {submitting && <Loader2 className="size-4 animate-spin" />}
             {submitting ? "Running pipeline..." : "Start Ingest Pipeline"}
@@ -256,8 +284,10 @@ export function DocumentsPage() {
         </div>
       </div>
 
-      <div className="min-h-0 rounded-xl border border-border bg-card p-4 lg:overflow-y-auto">
-        <h2 className="text-sm font-semibold text-foreground">Indexed Documents ({documents.length})</h2>
+      <div className="glass min-h-0 rounded-xl border border-border p-4 lg:overflow-y-auto">
+        <h2 className="font-display text-sm font-semibold tracking-tight text-foreground">
+          Indexed Documents ({documents.length})
+        </h2>
         <p className="mt-1 text-xs text-muted-foreground">
           Documents chunked, embedded, and stored in the vector index.
         </p>

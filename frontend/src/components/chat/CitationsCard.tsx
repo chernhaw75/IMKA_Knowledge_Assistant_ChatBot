@@ -7,7 +7,7 @@ interface CitationsCardProps {
 
 export function CitationsCard({ citations }: CitationsCardProps) {
   return (
-    <div className="rounded-xl border border-border bg-card p-4">
+    <div className="glass rounded-xl border border-border p-4">
       <h3 className="mb-3 text-sm font-semibold text-foreground">Sources ({citations.length})</h3>
 
       {citations.length === 0 ? (

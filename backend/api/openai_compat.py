@@ -20,7 +20,7 @@ from starlette.responses import StreamingResponse
 from api.auth import get_current_user
 from api.database import get_db
 from api.db_models import Conversation, Message
-from rag.intent import greeting_reply, is_greeting
+from rag.intent import classify_intent
 from rag.pipeline import build_answer_chain, prepare_context
 
 router = APIRouter(tags=["openai-compat"])
@@ -63,17 +63,21 @@ async def _get_or_create_conversation(db: AsyncSession, user_id: str, conversati
     return conversation
 
 
-async def _generate_answer(query: str) -> tuple[str, list[dict]]:
+async def _generate_answer(query: str, trace_metadata: dict | None = None) -> tuple[str, list[dict]]:
     """Runs intent detection first, then the RAG pipeline if needed. Returns (answer, citations)."""
-    if is_greeting(query):
-        return greeting_reply(), []
+    intent = await classify_intent(query, trace_metadata)
+    if intent.intent != "knowledge" and intent.reply:
+        return intent.reply, []
 
-    context, citations, rewritten = await prepare_context(query)
+    context, citations, rewritten = await prepare_context(query, trace_metadata)
     if not context:
         return "No relevant documents found for your query in the knowledge base.", []
 
     chain = build_answer_chain()
-    answer = await chain.ainvoke({"context": context, "question": rewritten})
+    answer = await chain.ainvoke(
+        {"context": context, "question": rewritten},
+        config={"run_name": "rag_answer_generation", "tags": ["rag", "stage5"], "metadata": trace_metadata or {}},
+    )
     return answer, citations
 
 
@@ -113,15 +117,16 @@ async def chat_completions(
     user_id = current_user["user_id"]
     query = _extract_query(body.messages)
     conversation = await _get_or_create_conversation(db, user_id, body.conversation_id)
+    trace_metadata = {"conversation_id": conversation.id, "user_id": user_id}
 
     if body.stream:
         return StreamingResponse(
-            _stream_sse(query, conversation, db),
+            _stream_sse(query, conversation, db, trace_metadata),
             media_type="text/event-stream",
             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
         )
 
-    answer, citations = await _generate_answer(query)
+    answer, citations = await _generate_answer(query, trace_metadata)
     message_id = await _persist_exchange(db, conversation, query, answer, citations)
 
     completion_id = f"chatcmpl-{uuid.uuid4().hex}"
@@ -153,24 +158,32 @@ def _chunk(completion_id: str, delta: dict, finish_reason: str | None = None, ex
     return f"data: {json.dumps(payload)}\n\n"
 
 
-async def _stream_sse(query: str, conversation: Conversation, db: AsyncSession) -> AsyncIterator[str]:
+async def _stream_sse(
+    query: str, conversation: Conversation, db: AsyncSession, trace_metadata: dict | None = None
+) -> AsyncIterator[str]:
     completion_id = f"chatcmpl-{uuid.uuid4().hex}"
     yield _chunk(completion_id, {"role": "assistant"})
 
     full_answer = ""
     citations: list[dict] = []
 
-    if is_greeting(query):
-        full_answer = greeting_reply()
+    intent = await classify_intent(query, trace_metadata)
+    if intent.intent != "knowledge" and intent.reply:
+        full_answer = intent.reply
         yield _chunk(completion_id, {"content": full_answer})
     else:
-        context, citations, rewritten = await prepare_context(query)
+        context, citations, rewritten = await prepare_context(query, trace_metadata)
         if not context:
             full_answer = "No relevant documents found for your query in the knowledge base."
             yield _chunk(completion_id, {"content": full_answer})
         else:
             chain = build_answer_chain()
-            async for token in chain.astream({"context": context, "question": rewritten}):
+            stream_config = {
+                "run_name": "rag_answer_generation",
+                "tags": ["rag", "stage5"],
+                "metadata": trace_metadata or {},
+            }
+            async for token in chain.astream({"context": context, "question": rewritten}, config=stream_config):
                 if token:
                     full_answer += token
                     yield _chunk(completion_id, {"content": token})
