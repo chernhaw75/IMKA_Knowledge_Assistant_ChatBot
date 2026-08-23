@@ -6,7 +6,7 @@ A Retrieval-Augmented Generation (RAG) knowledge assistant with a chat interface
 
 ```text
 .
-├── backend/     # FastAPI API + Streamlit app, RAG pipeline (LangChain, Qdrant, OpenAI)
+├── backend/     # FastAPI API, RAG pipeline (LangChain, Qdrant, OpenAI)
 ├── frontend/    # React + TypeScript + Vite dashboard/chat UI
 ├── Archive/     # Reference screenshots
 └── UI Mockup/   # UI design mockups
@@ -71,15 +71,6 @@ cp .env.example .env
 
 ## Running the App
 
-### Backend — Streamlit dashboard (single-page UI for ingestion + chat)
-
-```bash
-cd backend
-streamlit run app.py
-```
-
-Opens at `http://localhost:8501`.
-
 ### Backend — FastAPI (serves the React frontend)
 
 ```bash
@@ -98,15 +89,18 @@ npm run dev
 
 Opens at `http://localhost:5173` by default.
 
+Document ingestion is done through the React frontend's Documents page (which calls `POST /api/documents` on the FastAPI backend).
+
 ## Direct CLI Ingestion (alternative to the UI)
 
 ```bash
 cd backend
 python -m ingest.embed_and_store path/to/document1.pdf path/to/document2.docx
+python -m ingest.embed_and_store_docling path/to/document.pdf   # Docling pipeline, PDF only
 ```
 
 ## Tech Stack
 
-- **Backend**: FastAPI, Streamlit, LangChain, Qdrant, OpenAI, SQLAlchemy
+- **Backend**: FastAPI, LangChain, Qdrant, OpenAI, SQLAlchemy
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS
 - **Vector Store**: Qdrant (via Docker)
