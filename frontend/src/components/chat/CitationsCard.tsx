@@ -18,7 +18,10 @@ export function CitationsCard({ citations }: CitationsCardProps) {
             <div key={`${c.document_id}-${c.chunk_index}`} className="flex gap-2.5 rounded-lg border border-border p-3">
               <FileText className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium text-foreground">{c.document_name}</p>
+                <p className="truncate text-sm font-medium text-foreground">
+                  {c.document_name}
+                  {c.page !== null && <span className="font-mono text-muted-foreground"> · p. {c.page}</span>}
+                </p>
                 {c.bm25_score !== null && (
                   <p className="text-xs text-muted-foreground">Relevance score: {c.bm25_score.toFixed(2)}</p>
                 )}

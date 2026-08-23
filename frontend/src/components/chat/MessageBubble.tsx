@@ -11,6 +11,7 @@ import {
   ThumbsUp,
   X,
 } from "lucide-react"
+import { MarkdownContent } from "@/components/chat/MarkdownContent"
 import type { ChatMessage } from "@/lib/types"
 import { cn } from "@/lib/utils"
 
@@ -147,7 +148,7 @@ export function MessageBubble({ message, busy, onFeedback, onComment, onRegenera
 
         <div className="space-y-3 text-sm text-foreground">
           {message.content ? (
-            <p className="font-medium whitespace-pre-wrap">{message.content}</p>
+            <MarkdownContent content={message.content} />
           ) : (
             <div className="flex items-center gap-2 py-1 text-muted-foreground">
               <div className="flex gap-1">
@@ -168,6 +169,7 @@ export function MessageBubble({ message, busy, onFeedback, onComment, onRegenera
                 >
                   <FileText className="size-3" />
                   {c.document_name}
+                  {c.page !== null && <span className="font-mono">· p. {c.page}</span>}
                 </span>
               ))}
             </div>

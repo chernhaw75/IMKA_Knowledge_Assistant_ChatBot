@@ -19,8 +19,10 @@ _RERANK_TOP_N = int(os.getenv("RERANK_TOP_N", "5"))
 
 _SYSTEM_PROMPT = (
     "You are an enterprise knowledge assistant. "
-    "Answer ONLY using the provided context. "
-    "Do not hallucinate or add information not present in the context."
+    "Answer ONLY using the provided context — this is your sole grounding source. "
+    "Do not hallucinate or add information not present in the context. "
+    "If the context does not fully answer the question, say clearly what is missing "
+    "rather than filling the gap with outside knowledge."
 )
 
 _RAG_TEMPLATE = """\
@@ -31,8 +33,19 @@ Question:
 {question}
 
 Instructions:
-- Answer based solely on the context above.
-- Do NOT embed inline citations or brackets in the answer text.
+- Answer based solely on the context above — do not use outside knowledge.
+- Each context passage is labeled with its source document and, when known, its page
+  number, e.g. "[Document Name, p. 12]". When you use a fact from a passage, mention
+  the page number in natural language if it helps the reader locate it in the source
+  (e.g. "...as shown on page 12"). Only state a page number that appears in the
+  context labels — never guess or invent one. Do not reproduce the bracket label
+  format itself in your answer.
+- Format the answer in Markdown when it improves clarity: use headings, bullet or
+  numbered lists for steps/sequences, and a Markdown table when presenting tabular
+  or comparative data (e.g. specifications, thresholds, multiple values side by
+  side). Do not force structure onto a short, simple answer.
+- Write any mathematical formula in LaTeX using $...$ for inline math and $$...$$
+  for a standalone/display formula (not \( \) or \[ \]).
 - If the context does not contain enough information, say so clearly.
 """
 
@@ -114,11 +127,30 @@ def _clean_title(filename: str) -> str:
     return name.replace("_", " ").replace("-", " ").strip()
 
 
+def _page_number(doc: Document) -> int | None:
+    """Best-effort 1-indexed page number, from whichever ingestion pipeline produced the chunk.
+
+    Docling chunks carry `page_no` (already 1-indexed). PyPDFLoader chunks (the
+    standard pipeline) carry `page` (0-indexed), so it's shifted by one. Chunks
+    from non-paginated sources (.txt, .md, .docx) have neither — page is unknown.
+    """
+    page_no = doc.metadata.get("page_no")
+    if isinstance(page_no, int):
+        return page_no
+    page = doc.metadata.get("page")
+    if isinstance(page, int):
+        return page + 1
+    return None
+
+
 def _stage4_assemble_context(chunks: list[Document]) -> str:
-    return "\n\n---\n\n".join(
-        f"[{_clean_title(doc.metadata.get('document_name', 'Unknown'))}]\n{doc.page_content}"
-        for doc in chunks
-    )
+    parts = []
+    for doc in chunks:
+        title = _clean_title(doc.metadata.get("document_name", "Unknown"))
+        page = _page_number(doc)
+        label = f"{title}, p. {page}" if page is not None else title
+        parts.append(f"[{label}]\n{doc.page_content}")
+    return "\n\n---\n\n".join(parts)
 
 
 # ── Stage 6: Response Generation ──────────────────────────────────────────────
@@ -139,6 +171,7 @@ def _stage6_build_citations(chunks: list[Document]) -> list[dict]:
                     "document_name": _clean_title(doc_name),
                     "chunk_index": i,
                     "bm25_score": doc.metadata.get("bm25_score"),
+                    "page": _page_number(doc),
                 }
             )
     return citations
