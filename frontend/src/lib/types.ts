@@ -3,6 +3,7 @@ export interface ChatCitation {
   document_name: string
   chunk_index: number
   bm25_score: number | null
+  page: number | null
 }
 
 export interface ChatMessage {

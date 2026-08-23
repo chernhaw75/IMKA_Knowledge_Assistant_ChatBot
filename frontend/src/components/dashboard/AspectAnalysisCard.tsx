@@ -5,7 +5,7 @@ export function AspectAnalysisCard() {
   const maxMentions = Math.max(...aspectRows.map((r) => r.mentions))
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4">
+    <div className="glass rounded-xl border border-border p-4">
       <SectionHeader
         step={1}
         title="Aspect Analysis"
@@ -23,7 +23,7 @@ export function AspectAnalysisCard() {
             <div className="flex items-center gap-2">
               <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
                 <div
-                  className="h-full rounded-full bg-blue-500"
+                  className="brand-gradient h-full rounded-full"
                   style={{ width: `${(row.mentions / maxMentions) * 100}%` }}
                 />
               </div>

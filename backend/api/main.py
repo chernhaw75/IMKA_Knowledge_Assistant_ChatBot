@@ -17,6 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from qdrant_client.http.models import FieldCondition, Filter, MatchValue
 
 from ingest.embed_and_store import ingest_files
+from ingest.embed_and_store_docling import ingest_files_docling
 from ingest.registry import get_document, list_documents, remove_document
 from rag.qdrant_init import get_qdrant_client
 from rag.vectorstore import QDRANT_COLLECTION_NAME
@@ -31,6 +32,7 @@ from .schemas import HealthResponse, IngestResponse
 load_dotenv()
 
 ALLOWED_EXTENSIONS = {".pdf", ".txt", ".md", ".docx", ".doc"}
+DOCLING_ALLOWED_EXTENSIONS = {".pdf"}
 
 
 @asynccontextmanager
@@ -81,9 +83,13 @@ async def upload_documents(
     files: list[UploadFile] = File(...),
     version: str = Form("1.0"),
     metadata: str = Form("{}"),
+    pipeline: str = Form("standard"),
 ):
     if not os.getenv("OPENAI_API_KEY"):
         raise HTTPException(status_code=503, detail="OPENAI_API_KEY must be configured on the server.")
+
+    if pipeline not in ("standard", "docling"):
+        raise HTTPException(status_code=400, detail="pipeline must be 'standard' or 'docling'.")
 
     try:
         metadata_dict = json.loads(metadata)
@@ -92,6 +98,8 @@ async def upload_documents(
     except ValueError:
         raise HTTPException(status_code=400, detail="metadata must be a JSON object of string values.")
 
+    allowed_extensions = DOCLING_ALLOWED_EXTENSIONS if pipeline == "docling" else ALLOWED_EXTENSIONS
+
     temp_paths = []
     original_names = []
     temp_dir = tempfile.gettempdir()
@@ -99,7 +107,7 @@ async def upload_documents(
     try:
         for upload in files:
             ext = os.path.splitext(upload.filename or "")[1].lower()
-            if ext not in ALLOWED_EXTENSIONS:
+            if ext not in allowed_extensions:
                 raise HTTPException(status_code=400, detail=f"Unsupported file type: {ext or '(none)'} for {upload.filename}")
 
             file_hash = hashlib.md5(upload.filename.encode("utf-8")).hexdigest()
@@ -111,7 +119,8 @@ async def upload_documents(
             original_names.append(upload.filename)
 
         try:
-            result = ingest_files(
+            ingest_fn = ingest_files_docling if pipeline == "docling" else ingest_files
+            result = ingest_fn(
                 temp_paths,
                 metadata=metadata_dict,
                 version=version,

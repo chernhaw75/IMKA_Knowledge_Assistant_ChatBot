@@ -37,6 +37,7 @@ class Citation(BaseModel):
     document_name: str
     chunk_index: int
     bm25_score: float | None = None
+    page: int | None = None
 
 
 class MessageOut(BaseModel):

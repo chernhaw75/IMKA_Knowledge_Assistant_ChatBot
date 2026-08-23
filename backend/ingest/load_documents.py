@@ -13,7 +13,7 @@ def load_pdf(path: str) -> List[Document]:
 def load_txt(path: str) -> List[Document]:
     if not os.path.exists(path):
         raise FileNotFoundError(f"File not found: {path}")
-    return TextLoader(path, encoding="utf-8").load()
+    return TextLoader(path, encoding="utf-8", autodetect_encoding=True).load()
 
 
 def load_docx(path: str) -> List[Document]:

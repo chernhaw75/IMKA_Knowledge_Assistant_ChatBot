@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Bot, Mic, Paperclip, Send } from "lucide-react"
 import type { ChatMessage } from "@/lib/types"
 import { MessageBubble } from "@/components/chat/MessageBubble"
@@ -23,6 +23,13 @@ export function ChatThread({
   onEditUser,
 }: ChatThreadProps) {
   const [draft, setDraft] = useState("")
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    el.scrollTop = el.scrollHeight
+  }, [messages])
 
   function submit() {
     const text = draft.trim()
@@ -33,7 +40,7 @@ export function ChatThread({
 
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <div className="min-h-0 flex-1 space-y-6 overflow-y-auto p-6">
+      <div ref={scrollRef} className="min-h-0 flex-1 space-y-6 overflow-y-auto p-6">
         {messages.length === 0 && !sending && (
           <div className="flex h-full flex-col items-center justify-center gap-2 text-center text-muted-foreground">
             <Bot className="size-8" />
@@ -54,7 +61,7 @@ export function ChatThread({
       </div>
 
       <div className="shrink-0 border-t border-border p-4">
-        <div className="flex items-center gap-2 rounded-full border border-border bg-background px-2 py-1.5">
+        <div className="glass focus-within:glow-ring flex items-center gap-2 rounded-full border border-border px-2 py-1.5 transition-shadow">
           <button type="button" className="rounded-full p-1.5 text-muted-foreground hover:bg-accent" aria-label="Attach file">
             <Paperclip className="size-4" />
           </button>
@@ -75,7 +82,7 @@ export function ChatThread({
             type="button"
             onClick={submit}
             disabled={sending || !draft.trim()}
-            className="flex size-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
+            className="brand-gradient flex size-8 shrink-0 items-center justify-center rounded-full text-white transition-transform hover:brightness-110 active:scale-95 disabled:opacity-40"
             aria-label="Send message"
           >
             <Send className="size-4" />

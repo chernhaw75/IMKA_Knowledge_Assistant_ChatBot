@@ -13,7 +13,7 @@ const iconMeta: Record<ExtractionStat["icon"], { icon: typeof Briefcase; classes
 
 export function ExtractionStatsCard() {
   return (
-    <div className="rounded-xl border border-border bg-card p-4">
+    <div className="glass rounded-xl border border-border p-4">
       <SectionHeader
         step={3}
         title="Information Extraction"

@@ -11,6 +11,7 @@ import {
   ThumbsUp,
   X,
 } from "lucide-react"
+import { MarkdownContent } from "@/components/chat/MarkdownContent"
 import type { ChatMessage } from "@/lib/types"
 import { cn } from "@/lib/utils"
 
@@ -44,8 +45,8 @@ function IconButton({
       title={label}
       className={cn(
         "rounded-md p-1.5 text-muted-foreground hover:bg-accent hover:text-foreground",
-        active && !danger && "bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-400",
-        active && danger && "bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-400",
+        active && !danger && "bg-primary/15 text-primary",
+        active && danger && "bg-destructive/15 text-red-600 dark:text-red-400",
       )}
     >
       {children}
@@ -111,7 +112,7 @@ export function MessageBubble({ message, busy, onFeedback, onComment, onRegenera
                 <button
                   type="button"
                   onClick={submitEdit}
-                  className="rounded-md bg-blue-600 px-2 py-1 text-xs font-medium text-white hover:bg-blue-700"
+                  className="brand-gradient rounded-md px-2 py-1 text-xs font-medium text-white hover:brightness-110"
                 >
                   Save & resend
                 </button>
@@ -119,7 +120,7 @@ export function MessageBubble({ message, busy, onFeedback, onComment, onRegenera
             </div>
           ) : (
             <>
-              <div className="rounded-2xl rounded-tr-sm bg-blue-600 px-4 py-2.5 text-sm whitespace-pre-wrap text-white">
+              <div className="brand-gradient rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm whitespace-pre-wrap text-white">
                 {message.content}
               </div>
               <div className="mt-1 flex justify-end opacity-0 transition-opacity group-hover:opacity-100">
@@ -136,8 +137,8 @@ export function MessageBubble({ message, busy, onFeedback, onComment, onRegenera
 
   return (
     <div className="flex gap-3">
-      <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted ring-1 ring-border">
-        <Bot className="size-4 text-foreground" />
+      <div className="brand-gradient glow-ring flex size-8 shrink-0 items-center justify-center rounded-full">
+        <Bot className="size-4 text-white" />
       </div>
       <div className="min-w-0 flex-1">
         <div className="mb-1 flex items-baseline gap-2 text-xs text-muted-foreground">
@@ -147,15 +148,15 @@ export function MessageBubble({ message, busy, onFeedback, onComment, onRegenera
 
         <div className="space-y-3 text-sm text-foreground">
           {message.content ? (
-            <p className="font-medium whitespace-pre-wrap">{message.content}</p>
+            <MarkdownContent content={message.content} />
           ) : (
             <div className="flex items-center gap-2 py-1 text-muted-foreground">
               <div className="flex gap-1">
-                <span className="size-1.5 animate-bounce rounded-full bg-muted-foreground [animation-delay:-0.3s]" />
-                <span className="size-1.5 animate-bounce rounded-full bg-muted-foreground [animation-delay:-0.15s]" />
-                <span className="size-1.5 animate-bounce rounded-full bg-muted-foreground" />
+                <span className="size-1.5 animate-bounce rounded-full bg-primary [animation-delay:-0.3s]" />
+                <span className="size-1.5 animate-bounce rounded-full bg-primary [animation-delay:-0.15s]" />
+                <span className="size-1.5 animate-bounce rounded-full bg-primary" />
               </div>
-              <span className="text-xs">Thinking...</span>
+              <span className="font-mono text-xs">Thinking...</span>
             </div>
           )}
 
@@ -168,6 +169,7 @@ export function MessageBubble({ message, busy, onFeedback, onComment, onRegenera
                 >
                   <FileText className="size-3" />
                   {c.document_name}
+                  {c.page !== null && <span className="font-mono">· p. {c.page}</span>}
                 </span>
               ))}
             </div>
@@ -223,7 +225,7 @@ export function MessageBubble({ message, busy, onFeedback, onComment, onRegenera
               <button
                 type="button"
                 onClick={submitComment}
-                className="rounded-md bg-blue-600 p-1.5 text-white hover:bg-blue-700"
+                className="brand-gradient rounded-md p-1.5 text-white hover:brightness-110"
                 aria-label="Submit comment"
               >
                 <Check className="size-3.5" />

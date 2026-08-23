@@ -5,7 +5,7 @@ export function TopicAnalysisCard() {
   const maxPrevalence = Math.max(...topicRows.map((r) => r.prevalence))
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4">
+    <div className="glass rounded-xl border border-border p-4">
       <SectionHeader
         step={2}
         title="Topic Analysis"

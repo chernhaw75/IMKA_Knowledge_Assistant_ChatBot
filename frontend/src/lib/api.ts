@@ -45,10 +45,13 @@ export function listDocuments(): Promise<DocumentRecord[]> {
   return fetch(`${API_URL}/api/documents`).then((res) => handle<DocumentRecord[]>(res))
 }
 
+export type IngestPipeline = "standard" | "docling"
+
 export interface UploadDocumentsParams {
   files: File[]
   version: string
   metadata: Record<string, string>
+  pipeline?: IngestPipeline
 }
 
 export function uploadDocuments(params: UploadDocumentsParams): Promise<IngestResponse> {
@@ -56,6 +59,7 @@ export function uploadDocuments(params: UploadDocumentsParams): Promise<IngestRe
   for (const file of params.files) form.append("files", file)
   form.append("version", params.version)
   form.append("metadata", JSON.stringify(params.metadata))
+  form.append("pipeline", params.pipeline ?? "standard")
 
   return fetch(`${API_URL}/api/documents`, { method: "POST", body: form }).then((res) =>
     handle<IngestResponse>(res),
@@ -105,6 +109,7 @@ export interface Citation {
   document_name: string
   chunk_index: number
   bm25_score: number | null
+  page: number | null
 }
 
 export interface OpenAIMessage {
