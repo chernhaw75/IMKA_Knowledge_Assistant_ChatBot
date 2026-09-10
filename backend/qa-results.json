@@ -1,0 +1,2357 @@
+{
+  "total": 100,
+  "passed": 71,
+  "failed": 29,
+  "pass_rate": 0.71,
+  "threshold": 0.55,
+  "results": [
+    {
+      "id": 1,
+      "question": "What is the main purpose of the ABB User's Manual?",
+      "expected": "It provides information on the transport, storage, installation, commissioning, operation, maintenance, and supervision of ABB rotating electrical machines.",
+      "actual": "The primary purpose of the ABB User's Manual is to provide essential information regarding the operation, maintenance, and safety of ABB's induction motors and generators. It includes:\n\n- Safety instructions and precautions to ensure safe operation (as noted on page 17).\n- Documentation details for understanding machine specifications and requirements (mentioned on page 18).\n- Guidance on troubleshooting and maintenance practices (as outlined on page 73).\n- Information on warranty claims and support services (discussed on page 117).\n\nOverall, the manual serves as a comprehensive resource for users to effectively operate and maintain their ABB machinery while adhering to safety standards.",
+      "score": 0.308,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.7775,
+          "page": 17
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "commissioning",
+        "electrical",
+        "installation",
+        "machines",
+        "provides",
+        "rotating",
+        "storage",
+        "supervision",
+        "transport"
+      ],
+      "error": null
+    },
+    {
+      "id": 2,
+      "question": "Who should perform actions described in the manual?",
+      "expected": "Trained personnel with previous experience in similar tasks and authorization from the user should perform the actions.",
+      "actual": "The actions outlined in the manual are to be performed by trained personnel with previous experience in similar tasks, and they must be authorized by the user, as stated in the introduction section of the manual. This ensures that the actions are carried out safely and properly [ABB Manual for Induction Motors and Generators EN (4), p. 17].",
+      "score": 0.8,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.9081,
+          "page": 18
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "authorization",
+        "perform"
+      ],
+      "error": null
+    },
+    {
+      "id": 3,
+      "question": "What should be done if the manual conflicts with the separate safety instructions?",
+      "expected": "The safety instructions prevail.",
+      "actual": "If there is a conflict between the safety instructions and the user manual, the safety instructions prevail. This is explicitly stated in the context provided, indicating that safety should always take precedence over other instructions. \n\nFor clarity, here are the key points:\n\n- **Conflict Resolution**: Safety instructions take priority over the user manual.\n- **Source**: This information is found on page 3 of the ABB Manual for Induction Motors and Generators.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.6509,
+          "page": 73
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 4,
+      "question": "What should be done if the manual conflicts with machine-specific additional documentation?",
+      "expected": "The additional machine-specific documentation prevails.",
+      "actual": "Conflicts between the manual and machine-specific documentation should be resolved by adhering to the following guideline:\n\n- The additional documentation will prevail in case of any conflict between this manual and the additional documentation of the machine, as stated in the User's Manual [page 18]. \n\nThis means that the information in the project documentation takes precedence over the User's Manual when discrepancies arise.",
+      "score": 0.8,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.3588,
+          "page": 18
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "prevails"
+      ],
+      "error": null
+    },
+    {
+      "id": 5,
+      "question": "What unique identifier should be provided when discussing a machine-specific issue?",
+      "expected": "The machine's 7-digit serial number should be provided.",
+      "actual": "To discuss a machine-specific issue, the unique identifier needed is the **7-digit serial number** of the machine. This serial number is stamped on the rating plate of the machine as well as on the machine frame, and it must be provided in any future correspondence regarding the machine, as it is the only unique information used for identifying it (as mentioned on page 18).",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.535,
+          "page": 18
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 6,
+      "question": "Where can the machine serial number be found?",
+      "expected": "It is stamped on the machine rating plate and on the machine frame.",
+      "actual": "The machine serial number can be found in two locations:\n\n1. **Rating Plate**: It is stamped on the rating plate of the machine.\n2. **Machine Frame**: It is also stamped on the machine frame itself.\n\nThis information is detailed on page 18 of the ABB Manual for Induction Motors and Generators.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.6629,
+          "page": 117
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 7,
+      "question": "Should the stainless steel rating plate be removed from the machine?",
+      "expected": "No. It is permanently attached to the machine frame and must not be removed.",
+      "actual": "No, you should not remove the stainless steel rating plate from the machine. The rating plate is attached permanently to the machine frame and must not be removed, as stated on page 18 of the manual.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.7438,
+          "page": 21
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 8,
+      "question": "What information accompanies the machine in addition to the User's Manual?",
+      "expected": "A Dimension Drawing, Electrical Connection Diagram, and Data Sheet are supplied with the machine.",
+      "actual": "In addition to the User's Manual, the following documentation is provided with the machine:\n\n- Dimension Drawing\n- Electrical Connection Diagram\n- Data Sheet, which includes:\n  - Mounting and outline dimensions of the machine\n  - Machine weight and load on the foundation\n  - Location of lifting eyes of the machine\n  - Instrumentation and location of accessories\n  - Bearing oil and lubricant requirements\n  - Main and auxiliary connections\n\nThis information is detailed in the User's Manual on page 18.",
+      "score": 0.889,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.8247,
+          "page": 18
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "supplied"
+      ],
+      "error": null
+    },
+    {
+      "id": 9,
+      "question": "What information is typically provided on the Dimension Drawing and Data Sheet?",
+      "expected": "They provide information such as mounting and outline dimensions, machine weight and foundation load, lifting-eye locations, instrumentation and accessories, bearing lubrication requirements, and main and auxiliary connections.",
+      "actual": "The information included in a Dimension Drawing and Data Sheet consists of the following:\n\n- **Mounting and outline dimensions of the machine**\n- **Machine weight and load on the foundation**\n- **Location of lifting eyes of the machine**\n- **Instrumentation and location of accessories**\n- **Bearing oil and lubricant requirements**\n- **Main and auxiliary connections**\n\nThis information is detailed in the documentation provided with each machine, as mentioned on page 18 of the manual.",
+      "score": 0.727,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.9919,
+          "page": 18
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "eye",
+        "locations",
+        "lubrication",
+        "provide",
+        "such",
+        "they"
+      ],
+      "error": null
+    },
+    {
+      "id": 10,
+      "question": "What measurement systems are used in the manual?",
+      "expected": "The manual uses SI (metric) units and US units.",
+      "actual": "The manual describes the following measurement systems:\n\n1. **Measurement Units**: The units used in the manual are based on the SI (metric) system and the US system, as mentioned on page 18.\n\n2. **Vibration Measurement**: The measurement equipment for bearing housing vibrations must be capable of measuring broad-band r.m.s. vibration with flat response over a frequency range of at least 10 Hz to 1,000 Hz, in accordance with ISO 2954, as stated on page 80.\n\n3. **Vibration Evaluation Standard**: The evaluation of machine vibration is based on ISO 20186-3, which pertains to industrial machines with nominal power above 15 kW and nominal speeds between 120 r/min and 15,000 r/min when measured in situ, as noted on page 80.\n\nNo additional specific measurement systems beyond these are detailed in the provided context.",
+      "score": 0.833,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.5125,
+          "page": 81
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "uses"
+      ],
+      "error": null
+    },
+    {
+      "id": 11,
+      "question": "What should be done when damage is found immediately after delivery?",
+      "expected": "Report the damage immediately to the transport or forwarding company and stop commissioning if necessary.",
+      "actual": "If damage is discovered immediately after delivery, the following steps should be taken:\n\n1. **Photograph the Damage**: Take photographs of any transport damage.\n2. **Report the Damage**: Report the damage immediately to the supplier and the transport company.\n3. **Use Checklists**: Utilize the checklists in the Appendix Commissioning report for documentation.\n4. **Claim Transport Insurance**: Ensure that the report is made within one (1) week after arrival to claim transport insurance, if applicable.\n\nAdditionally, if any accessories are missing, they should also be documented and reported immediately to the supplier, as stated on page 30.",
+      "score": 0.7,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.5046,
+          "page": 30
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "forwarding",
+        "necessary",
+        "stop"
+      ],
+      "error": null
+    },
+    {
+      "id": 12,
+      "question": "What environment is recommended when storing a machine?",
+      "expected": "A dry, clean, ventilated, low-humidity location that is free from excessive vibration, shocks, dust, corrosive gases, insects, and vermin.",
+      "actual": "The recommended storage environment for a machine is as follows:\n\n- **Temperature**: \n  - Stable temperature, preferably in the range from 10\u00baC (50\u00b0F) to 50\u00baC (120\u00b0F).\n  - If anti-condensation heaters are energized and the surrounding air is above 50\u00baC (120\u00b0F), it must be confirmed that the machine is not overheated.\n\n- **Humidity**: \n  - Low relative air humidity, preferably below 75%.\n  - The temperature of the machine should be kept above the dew point to prevent moisture from condensing inside the machine.\n\nThis information is detailed on page 31 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.133,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.2345,
+          "page": 90
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "clean",
+        "corrosive",
+        "dry",
+        "dust",
+        "excessive",
+        "free",
+        "gases",
+        "insects",
+        "location",
+        "shocks",
+        "ventilated",
+        "vermin",
+        "vibration"
+      ],
+      "error": null
+    },
+    {
+      "id": 13,
+      "question": "What temperature range is preferred for short-term indoor storage?",
+      "expected": "A stable temperature preferably between 10\u00b0C and 50\u00b0C.",
+      "actual": "The preferred temperature range for short-term indoor storage is between 10\u00baC (50\u00b0F) and 50\u00baC (120\u00b0F) as mentioned on page 31.",
+      "score": 0.667,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5068,
+          "page": 31
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "preferably",
+        "stable"
+      ],
+      "error": null
+    },
+    {
+      "id": 14,
+      "question": "What relative humidity is preferred for short-term storage?",
+      "expected": "Relative humidity should preferably be below 75%.",
+      "actual": "The ideal relative humidity for short-term storage is preferably below 75%, as mentioned in the context. This helps to prevent moisture from condensing inside the machine.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.0368,
+          "page": 31
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 15,
+      "question": "Why should the machine temperature be kept above the dew point during storage?",
+      "expected": "To prevent moisture from condensing inside the machine.",
+      "actual": "The reasons for maintaining machine temperature above the dew point during storage are to prevent moisture from condensing inside the machine. This is important to avoid potential damage or degradation of the machine components due to moisture accumulation, as indicated in the storage guidelines on page 31. \n\nHowever, the context does not provide further details on the specific consequences of moisture condensation or additional protective measures that may be necessary.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.5011,
+          "page": 31
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 16,
+      "question": "What should be done with anti-condensation heaters during storage when they are fitted?",
+      "expected": "They should be energized as required and their operation should be verified periodically.",
+      "actual": "The context does not provide specific procedures for storing anti-condensation heaters when they are installed. It mentions that anti-condensation heaters must be interlocked to operate only when the motor is de-energized and that they can only operate in a temperature-controlled environment, but it does not detail the storage procedure for the heaters themselves.",
+      "score": 0.333,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 9.0461,
+          "page": 10
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "operation",
+        "periodically",
+        "required",
+        "verified"
+      ],
+      "error": null
+    },
+    {
+      "id": 17,
+      "question": "How should a machine stored outdoors be protected from moisture from below?",
+      "expected": "It should be placed on rigid supports at least 100 mm (4 inches) high.",
+      "actual": "To protect an outdoor machine from moisture exposure from the ground, the following methods can be used:\n\n1. **Elevate the Machine**: \n   - Place the machine on at least 100 mm (4 inches) high rigid supports to ensure that no moisture can enter from below.\n\n2. **Cover the Machine**: \n   - The machine should be covered to completely prevent rain from entering. The cover must also allow for ventilation to avoid moisture buildup.\n\n3. **Ventilation**: \n   - Ensure that the machine is provided with good ventilation. If the machine is left in its transportation package, large enough ventilation openings must be made in the package.\n\n4. **Protection from Insects and Vermin**: \n   - Protect the machine from harmful insects and vermin to prevent any additional moisture-related issues.\n\nThese measures are outlined on page 31 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.875,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.8591,
+          "page": 31
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "placed"
+      ],
+      "error": null
+    },
+    {
+      "id": 18,
+      "question": "What additional checks are required for storage longer than two months?",
+      "expected": "Measure winding insulation resistance and temperature every three months and inspect painted and anti-corrosive surfaces every three months.",
+      "actual": "For storage periods exceeding two months, the following additional checks are required:\n\n1. **Rolling Bearings Maintenance**:\n   - The bearings should be well lubricated during storage. Acceptable grease types are specified in Chapter 2.1.2 Bearing plate.\n   - The rotor must be turned 10 revolutions every two months to maintain the bearings in good condition. Any transport locking device should be removed during this process.\n\n2. **Corrosion Protection**:\n   - The corrosion protection treatment must be repeated every six months for a period of two years. If the storage period exceeds two years, the bearing must be taken apart and treated separately.\n\n3. **Inspection Before Commissioning**:\n   - The bearings should be opened, and all parts inspected after storage and before commissioning. Any corrosion must be removed with a fine emery cloth. If the shaft has left imprints on the lower liner-half, it must be replaced with a new one.\n\nThese measures are outlined in the context on pages 32 and 33.",
+      "score": 0.154,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.4696,
+          "page": 127
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "anti",
+        "corrosive",
+        "inspect",
+        "insulation",
+        "measure",
+        "painted",
+        "resistance",
+        "surfaces",
+        "temperature",
+        "three",
+        "winding"
+      ],
+      "error": null
+    },
+    {
+      "id": 19,
+      "question": "How often should the rotor of a machine with rolling bearings be turned during storage?",
+      "expected": "Turn the rotor 10 revolutions every two months.",
+      "actual": "The recommended frequency for turning the rotor of a machine with rolling bearings during storage is every two months, as stated in the context. It is important to remove any possible transport locking device during this process, as mentioned on page 32 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.571,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 9.9186,
+          "page": 32
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "10",
+        "revolutions",
+        "turn"
+      ],
+      "error": null
+    },
+    {
+      "id": 20,
+      "question": "Why are transport locking devices used?",
+      "expected": "They protect bearings and other machine components against damage during transport and storage.",
+      "actual": "The purpose of transport locking devices is to protect the bearings against damage during transport and storage. They must be fitted to the machine whenever it is moved, transported to another location, or stored, as indicated in the context. Additionally, the transport locking device helps ensure the integrity of the machine components during these processes, as noted on page 37.",
+      "score": 0.909,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.4138,
+          "page": 36
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "other"
+      ],
+      "error": null
+    },
+    {
+      "id": 21,
+      "question": "What must be done with shipping braces or bearing locks before commissioning?",
+      "expected": "Remove them before commissioning and store them for possible future use.",
+      "actual": "Before commissioning, the following procedures must be followed for shipping braces or bearing locks:\n\n1. **Remove Shipping Braces**: Shipping braces, such as bearing locks and vibration dampers, must be removed prior to commissioning.\n2. **Store for Further Use**: After removal, these braces should be stored for future use.\n\nThese instructions are outlined in the context provided on page 3 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.75,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.2982,
+          "page": 3
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "possible",
+        "them"
+      ],
+      "error": null
+    },
+    {
+      "id": 22,
+      "question": "What lubrication information is shown on the bearing plate for grease-lubricated rolling bearings?",
+      "expected": "It identifies the D-end and ND-end bearing types, lubrication interval, grease quantities, additional information, and the grease type supplied from the factory.",
+      "actual": "The lubrication information provided on the bearing plate for grease-lubricated rolling bearings includes the following:\n\n1. **Bearing type for D-end**\n2. **Bearing type for ND-end**\n3. **Lubrication interval**\n4. **Quantity of grease for D-end bearing**\n5. **Quantity of grease for ND-end bearing**\n6. **Additional information**\n7. **Type of grease delivered from factory**\n\nThis information is detailed on page 22 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.714,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.7911,
+          "page": 85
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "identifies",
+        "quantities",
+        "supplied",
+        "types"
+      ],
+      "error": null
+    },
+    {
+      "id": 23,
+      "question": "What information is shown on the bearing plate for sleeve bearings?",
+      "expected": "It includes bearing types, oil-change interval, viscosity class, oil quantities, lubrication method, oil flow and pressure where applicable, and rotor end float.",
+      "actual": "The bearing plate for sleeve bearings displays the following information:\n\n1. **Bearing type for D-end**\n2. **Bearing type for ND-end**\n3. **Oil change interval**\n4. **Viscosity class**\n5. **Oil quantity for D-end bearing (for self-lubricated)**\n6. **Oil quantity for ND-end bearing (for self-lubricated)**\n7. **Method of lubrication for D-end bearing** (oil flow and pressure for flood lubricated bearing)\n8. **Method of lubrication for ND-end bearing** (oil flow and pressure for flood lubricated bearing)\n9. **Rotor end float (axial play)**\n\nIt is imperative to follow the information provided on the bearing plate, as failure to do so will void the warranty for the bearings [ABB Manual for Induction Motors and Generators EN, p. 23].",
+      "score": 0.765,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.2919,
+          "page": 23
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "applicable",
+        "includes",
+        "quantities",
+        "types"
+      ],
+      "error": null
+    },
+    {
+      "id": 24,
+      "question": "Can the information on the bearing plate be ignored if another lubricant seems suitable?",
+      "expected": "No. The bearing plate information must be followed; failure to do so can void the bearing warranty.",
+      "actual": "It is not acceptable to disregard the information on the bearing plate, even if an alternative lubricant appears suitable. The context emphasizes the importance of using the correct lubricant as specified on the bearing plate, stating that the grease must be of good quality and with the correct base soap to ensure a long and trouble-free lifetime of the bearings. Additionally, if the make of grease is changed and compatibility is uncertain, it is advised to consult the manufacturing ABB factory for guidance. Mixing greases is also explicitly discouraged, as there must be only one type of grease inside the bearing [ABB Manual for Induction Motors and Generators EN (4), p. 86].",
+      "score": 0.364,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 9.7827,
+          "page": 85
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "do",
+        "failure",
+        "followed",
+        "no",
+        "so",
+        "void",
+        "warranty"
+      ],
+      "error": null
+    },
+    {
+      "id": 25,
+      "question": "What lifting points should be used to lift the complete machine?",
+      "expected": "Use only the lifting lugs or eyes specifically intended for lifting the complete machine.",
+      "actual": "The recommended lifting points for lifting the entire machine are:\n\n- Use only the lifting lugs or eyes intended for lifting the complete machine.\n- Do not use any small additional lifting lugs or eyes available, as they are only for service purposes.\n- When lifting the machine from the bottom, use only lifting spots marked with the ISO 7000-0625 standard mark (as shown on page 24).\n- For AMI machines 560 to 1000, always use lifting shackles in the lifting eyes to eliminate the risk caused by sharp corners (mentioned on page 24).\n\nIt is important to ensure that the lifting eyebolts or lugs integrated with the machine frame are undamaged and tightened before lifting (as noted on page 23).",
+      "score": 0.889,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.1031,
+          "page": 23
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "specifically"
+      ],
+      "error": null
+    },
+    {
+      "id": 26,
+      "question": "Can small service lifting eyes be used to lift the complete machine?",
+      "expected": "No. Small additional lifting eyes intended for service purposes must not be used for lifting the complete machine.",
+      "actual": "No, small service lifting eyes cannot safely lift an entire machine. The context specifies that only the lifting lugs or eyes intended for lifting the complete machine should be used, and that small additional lifting lugs or eyes are only for service purposes and not meant for lifting the entire machine. This information is found on page 23 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.923,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.5166,
+          "page": 23
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "must"
+      ],
+      "error": null
+    },
+    {
+      "id": 27,
+      "question": "What should be checked before using lifting lugs or eyebolts?",
+      "expected": "Check that they are undamaged and that lifting eyebolts are properly tightened.",
+      "actual": "Before using lifting lugs or eyebolts, the following safety checks should be performed:\n\n1. **Check for Damage**: Ensure that the eyebolts or the lifting lugs integrated with the machine frame are undamaged. Damaged lifting lugs must not be used.\n\n2. **Tightening Eyebolts**: Verify that the lifting eyebolts are tightened before lifting.\n\n3. **Adjustment of Eyebolt Position**: If necessary, adjust the position of the eyebolt with suitable washers.\n\nThese checks are crucial to ensure safe lifting operations as outlined in the manual [ABB Manual for Induction Motors and Generators EN (4), p. 23].",
+      "score": 0.714,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.8452,
+          "page": 23
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "properly",
+        "they"
+      ],
+      "error": null
+    },
+    {
+      "id": 28,
+      "question": "How should an unpacked machine normally be lifted?",
+      "expected": "It should be lifted by crane using the lifting eyes on the machine frame.",
+      "actual": "The proper method for lifting an unpacked machine is as follows:\n\n1. **Use Suitable Lifting Equipment**: Ensure that appropriate lifting equipment is available.\n2. **Lift from Lifting Eyes**: The machine should always be lifted by crane from the lifting eyes on the frame of the machine.\n3. **Avoid Forklift Lifting**: The machine should never be lifted by forklift from the bottom or the feet of the machine.\n\nThis information is detailed on page 25 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.857,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.6669,
+          "page": 23
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "using"
+      ],
+      "error": null
+    },
+    {
+      "id": 29,
+      "question": "Should an unpacked machine be lifted by forklift from its feet or bottom?",
+      "expected": "No. The manual states that an unpacked machine should not be lifted by forklift from the bottom or machine feet.",
+      "actual": "An unpacked machine should **never** be lifted by forklift from the bottom or the feet of the machine. It should always be lifted by crane from the lifting eyes on the frame of the machine, as stated on page 25.",
+      "score": 0.6,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 12.5166,
+          "page": 25
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "manual",
+        "no",
+        "not",
+        "states"
+      ],
+      "error": null
+    },
+    {
+      "id": 30,
+      "question": "What special lifting precaution applies to AMI machines sizes 560 to 1000?",
+      "expected": "Always use lifting shackles in the lifting eyes to eliminate the risk caused by sharp corners.",
+      "actual": "For AMI machines sized 560 to 1000, the following special lifting precautions apply:\n\n- Always use lifting shackles in the lifting eyes to eliminate the risk caused by sharp corners. This is specifically noted to ensure safety during the lifting process [ABB Manual for Induction Motors and Generators EN (4), p. 24]. \n\nNo additional specific lifting precautions for this size range are provided in the context.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.1671,
+          "page": 3
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 31,
+      "question": "What is important about the machine foundation before installation?",
+      "expected": "It should provide even, solid support, be suitable for the loads, and be free from problematic external vibration.",
+      "actual": "### Key Considerations for Machine Foundation Before Installation\n\n1. **Foundation Cleanliness**: \n   - The foundation must be cleaned carefully to ensure proper installation.\n\n2. **Flatness and Parallelism**: \n   - The foundations should be flat and plain parallel within 0.1 mm (4.0 mil) or better.\n\n3. **Vibration-Free Environment**: \n   - The foundation must be free from external vibrations to ensure stable operation.\n\n4. **Foundation Preparation**: \n   - The upper part of the foundation should be swept or vacuum cleaned before installation.\n\nThese considerations are essential to ensure the machine is installed correctly and operates efficiently, as detailed in the manual on pages 42 and 39.",
+      "score": 0.3,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.8151,
+          "page": 39
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "even",
+        "loads",
+        "problematic",
+        "provide",
+        "solid",
+        "suitable",
+        "support"
+      ],
+      "error": null
+    },
+    {
+      "id": 32,
+      "question": "What positioning accuracy is specified during erection on a concrete foundation?",
+      "expected": "The required rough positioning accuracy is within 2 mm (80 mil).",
+      "actual": "The specified positioning accuracy for erecting structures on a concrete foundation is within 2 mm (80 mil) as mentioned in the context.",
+      "score": 0.75,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.4408,
+          "page": 41
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "required",
+        "rough"
+      ],
+      "error": null
+    },
+    {
+      "id": 33,
+      "question": "What type of grout is recommended for installation on a concrete foundation?",
+      "expected": "High-quality non-shrinking grouting material is recommended.",
+      "actual": "The context recommends using high-quality non-shrinking grouting materials for the installation on a concrete foundation. This is to avoid difficulties with the grouting in the future, as cracks in the grouting compound or poor attachment to the concrete foundation cannot be accepted, as stated on page 41.",
+      "score": 0.714,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.1009,
+          "page": 43
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "material",
+        "recommended"
+      ],
+      "error": null
+    },
+    {
+      "id": 34,
+      "question": "Why is machine alignment important?",
+      "expected": "Correct alignment helps ensure permissible vibration, reliable bearing operation, proper coupling behavior, and long machine life.",
+      "actual": "The importance of machine alignment is highlighted in several ways in the provided context:\n\n1. **Preventing Damage**: Proper alignment ensures that the machine stands on all four feet (screws) on a plain parallel within 0.1 mm (4.0 mil) or better. If this is not achieved, the frame of the machine may twist or bend, leading to potential bearing or other damages (as noted on page 43).\n\n2. **Accurate Operation**: The alignment procedure begins with measuring the run-out of the coupling halves, which indicates any inaccuracies in the shaft and/or coupling halves. The admissible run-out error is specified to be less than 0.08 mm (3.15 mil) (page 47). This precision is crucial for the effective operation of the machine.\n\n3. **Thermal Expansion Consideration**: The alignment accuracy can be affected by thermal expansion of the machine's frame, which necessitates careful measurement and adjustment (page 49).\n\n4. **Alignment Tolerances**: While specific alignment tolerances are difficult to define due to various influencing factors, maintaining proper alignment is essential to avoid operational issues (page 49).\n\n5. **Measurement and Adjustment**: The alignment process involves measuring and noting readings for parallel, angular, and axial misalignment in multiple positions, ensuring comprehensive assessment and correction (page 48).\n\nIn summary, machine alignment is critical for preventing damage, ensuring accurate operation, accommodating thermal effects, and maintaining overall machine performance.",
+      "score": 0.4,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 3.714,
+          "page": 43
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "behavior",
+        "correct",
+        "ensure",
+        "helps",
+        "life",
+        "long",
+        "permissible",
+        "reliable",
+        "vibration"
+      ],
+      "error": null
+    },
+    {
+      "id": 35,
+      "question": "Why must thermal expansion be considered during alignment?",
+      "expected": "The shaft center and machine dimensions change as the machine reaches operating temperature, which can change alignment.",
+      "actual": "Thermal expansion is important in alignment processes for several reasons:\n\n1. **Impact on Alignment**: Running temperatures significantly influence the alignment of machines. The temperature during operation is typically higher than during installation, causing the shaft center to rise and move further away from the feet of the machine. This means that alignment must account for these changes in position due to thermal expansion.\n\n2. **Axial Movement**: It is crucial to ensure that there is continuous free axial movement between the coupling halves (excluding rigid couplings) to allow for thermal expansion of the machine shaft. This prevents damage to the bearings, as locked axial movement can lead to misalignment and potential failure.\n\n3. **Calculation of Thermal Expansion**: The expected thermal expansion can be calculated using the formula:\n   $$\\Delta L = \\alpha \\times \\Delta T \\times L$$\n   where:\n   - $\\Delta L$ = thermal expansion [mm]\n   - $\\alpha = 10 \\times 10^{-6} \\text{ K}^{-1}$\n   - $\\Delta T$ = temperature change [K]\n   - $L$ = frame length [mm]\n   This calculation helps in determining how much adjustment is necessary during the alignment process.\n\n4. **Consideration of Both Machines**: It is essential to consider the thermal expansion of both the driven machine and the electrical machine to define the total thermal expansion that needs to be accommodated during alignment.\n\nThese factors highlight the necessity of accounting for thermal expansion to ensure proper alignment and prevent mechanical issues during operation.",
+      "score": 0.667,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 3.3782,
+          "page": 46
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "dimensions",
+        "operating",
+        "reaches"
+      ],
+      "error": null
+    },
+    {
+      "id": 36,
+      "question": "What is the approximate formula for upward thermal expansion given in the manual?",
+      "expected": "\u0394H = \u03b1 \u00d7 \u0394T \u00d7 H, where \u0394H is thermal expansion, \u03b1 is the thermal expansion coefficient, \u0394T is temperature change, and H is shaft height.",
+      "actual": "The formula for upward thermal expansion provided in the manual is:\n\n$$\n\\Delta H = \\alpha \\times \\Delta T \\times H\n$$\n\nwhere:\n- $\\Delta H$ = thermal expansion [mm]\n- $\\alpha = 10 \\times 10^{-6} \\text{ K}^{-1}$\n- $\\Delta T = 40 \\text{ K}$\n- $H$ = shaft height [mm]\n\nThis is detailed on page 46 of the manual.",
+      "score": 0.571,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.1008,
+          "page": 37
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "change",
+        "coefficient",
+        "temperature"
+      ],
+      "error": null
+    },
+    {
+      "id": 37,
+      "question": "What should be ensured between coupling halves to accommodate axial thermal expansion?",
+      "expected": "Continuous free axial movement should be possible between coupling halves, except for rigid couplings.",
+      "actual": "To accommodate axial thermal expansion between coupling halves, the following measures should be taken:\n\n1. **Ensure Continuous Free Axial Movement**: It is crucial to allow for continuous free axial movement between the coupling halves (excluding rigid couplings) to permit axial thermal expansion of the machine shaft without damaging the bearings. This is emphasized in the context on page 37 and page 46.\n\n2. **Calculate Expected Axial Thermal Expansion**: The expected axial thermal expansion of the rotor can be calculated using the formula:\n   $$\\Delta L = \\alpha \\times \\Delta T \\times L$$\n   where:\n   - $\\Delta L$ = thermal expansion [mm]\n   - $\\alpha = 10 \\times 10^{-6} \\text{ K}^{-1}$\n   - $\\Delta T$ = temperature change (50 K for certain models, 80 K for others)\n   - $L$ = frame length [mm]\n   This calculation is detailed on page 46.\n\n3. **Consider Thermal Expansion of the Driven Machine**: When defining the total thermal expansion, it is important to consider the thermal expansion of the driven machine in relation to the electrical machine, as noted on page 46.\n\n4. **Use Heat Compensated Alignment**: Depending on the operating temperature of the driven machine, coupling type, and distance between machines, it may be necessary to use heat compensated alignment to account for the differences in machine temperature during operation versus erection, as mentioned on page 46.\n\nThese measures will help ensure that the axial thermal expansion is properly accommodated, preventing potential damage to the bearings.",
+      "score": 0.818,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.6024,
+          "page": 46
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "except",
+        "possible"
+      ],
+      "error": null
+    },
+    {
+      "id": 38,
+      "question": "What is the admissible coupling-half run-out error stated in the manual?",
+      "expected": "The admissible run-out error is less than 0.08 mm (3.15 mil).",
+      "actual": "The admissible run-out error for the coupling half is specified as less than 0.08 mm (3.15 mil) [ABB Manual for Induction Motors and Generators EN, p. 47].",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 13.3378,
+          "page": 47
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 39,
+      "question": "When should final alignment measurements be recorded?",
+      "expected": "They should always be recorded after proper shimming and tightening of fixing bolts for future reference.",
+      "actual": "Final alignment measurements should always be recorded for future reference after proper shimming and with fixing bolts properly tightened, as noted in the context on page 46.",
+      "score": 0.818,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.0386,
+          "page": 46
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "they",
+        "tightening"
+      ],
+      "error": null
+    },
+    {
+      "id": 40,
+      "question": "What must be done before turning a sleeve-bearing machine during alignment checks?",
+      "expected": "The sleeve bearings must be filled with oil.",
+      "actual": "Before aligning a sleeve-bearing machine, the following steps should be taken:\n\n1. **Measure Insulation Resistance**: Measure the insulation resistance of the winding before any other preparations are done, as described in Chapter 3.3.1.\n\n2. **Remove Transport Locking Device**: If applicable, remove the transport locking device and store it for future use.\n\n3. **Check and Fill Sleeve Bearings**:\n   - Fill the sleeve bearings with appropriate oil. For suitable oils, refer to Chapter 7.5.2.4.\n   - Clean the sleeve bearings before filling in oil if the machine has been stored for a long period (over two months) and the bearings have been treated against corrosion. Note that sleeve bearings are always delivered without oil.\n\n4. **Remove Anti-Corrosive Coating**: Remove the anti-corrosive coating on the shaft extension and machine feet with white spirit.\n\n5. **Install Coupling Half**: Install the coupling half as described in Chapter 3.3.4.\n\n6. **Check Drain Plugs**: Ensure that the drain plugs at the lowest part of both ends of the machine are in the open position, as mentioned in Chapter 3.3.6.\n\nThese steps ensure that the machine is properly prepared for alignment and operation.",
+      "score": 0.6,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 3.9196,
+          "page": 47
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "filled",
+        "must"
+      ],
+      "error": null
+    },
+    {
+      "id": 41,
+      "question": "What should be checked after final machine installation?",
+      "expected": "Check alignment, mounting, covers, seals, coupling guard, and ensure no tools, dust, debris, or foreign objects remain inside enclosures.",
+      "actual": "After the final installation of a machine, the following checks should be performed:\n\n1. **Retightening of Anchor Bolts**: \n   - After the concrete has set, lift the machine from the foundation and retighten the anchor bolts. Lock the nuts by bridging or hitting sufficiently hard with a center punch.\n\n2. **Tightening of Mounting Bolts**: \n   - Lift the machine back onto the foundation and tighten the mounting bolts.\n\n3. **Alignment Check**: \n   - Check the alignment to ensure that the machine will run with permissible vibration. If necessary, make adjustments as described in Chapter 3.6 Alignment.\n\nThese steps are crucial to ensure the proper functioning and stability of the machine after installation, as outlined on page 41 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.235,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.6151,
+          "page": 41
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "coupling",
+        "covers",
+        "debris",
+        "dust",
+        "enclosures",
+        "foreign",
+        "guard",
+        "inside",
+        "no",
+        "objects",
+        "remain",
+        "seals",
+        "tools"
+      ],
+      "error": null
+    },
+    {
+      "id": 42,
+      "question": "Why must the coupling be covered with a touch guard?",
+      "expected": "To prevent accidental contact with rotating parts.",
+      "actual": "The necessity to cover the coupling with a touch guard is to ensure safety during operation. This is emphasized in multiple passages, indicating that the coupling must be covered with a touch guard to protect against accidental contact and potential injury. This requirement is mentioned on pages 38 and 42 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.4,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.6427,
+          "page": 3
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "parts",
+        "prevent",
+        "rotating"
+      ],
+      "error": null
+    },
+    {
+      "id": 43,
+      "question": "What are the basic electrical safety actions before working on the machine?",
+      "expected": "De-energize the machine, prevent reclosing, verify isolation, connect to earth and short where required, protect against neighboring live parts, and de-energize auxiliary circuits.",
+      "actual": "### Essential Electrical Safety Precautions Before Operating a Machine\n\n1. **General Safety Precautions**: \n   - Always take general electrical safety precautions and respect local regulations to prevent personnel injury. This should be done according to the instructions of security personnel [ABB Manual for Induction Motors and Generators EN (4), p. 73].\n\n2. **Qualified Personnel**: \n   - Ensure that personnel performing maintenance on electrical equipment are highly qualified and trained in specific maintenance procedures and tests for rotating electrical machines [ABB Manual for Induction Motors and Generators EN (4), p. 73].\n\n3. **Electrical Connections**:\n   - Thoroughly plan the electrical installation before taking any action. Study the connection diagrams received with the machine [ABB Manual for Induction Motors and Generators EN (4), p. 56].\n   - Verify that the supply voltage and frequency match the values indicated on the machine's rating plate [ABB Manual for Induction Motors and Generators EN (4), p. 56].\n   - Ensure that incoming cables are separated from the supply network and connected to protective earth [ABB Manual for Induction Motors and Generators EN (4), p. 56].\n\n4. **Safe Electrical Connection**:\n   - Make sure that a permanent safe electrical connection is maintained using appropriate cable terminals. Establish and maintain safe equipotential bonding [ABB Manual for Induction Motors and Generators EN (4), p. 4].\n\n5. **Terminal Box Safety**:\n   - Ensure no foreign bodies, dirt, or moisture are present in the terminal box. Close unused cable entrance holes and the box itself in a dust- and watertight manner [ABB Manual for Induction Motors and Generators EN (4), p. 4].\n\n6. **Earthing and Equipotentialing**:\n   - Check that all earthing and equipotentialing cables are effectively connected before starting the machine. Do not remove any earthing or equipotentialing cables installed by the manufacturer [ABB Manual for Induction Motors and Generators EN (4), p. 10].\n\n7. **Clearances and Creepage Distances**:\n   - Do not make any removals or adjustments in terminal boxes, as this could decrease clearances or creepage distances between parts [ABB Manual for Induction Motors and Generators EN (4), p. 10].\n\nThese precautions are essential to ensure safe operation and maintenance of electrical machines.",
+      "score": 0.278,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.3272,
+          "page": 73
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "against",
+        "auxiliary",
+        "circuits",
+        "connect",
+        "de",
+        "energize",
+        "isolation",
+        "live",
+        "neighboring",
+        "protect",
+        "reclosing",
+        "required",
+        "short"
+      ],
+      "error": null
+    },
+    {
+      "id": 44,
+      "question": "Who should carry out electrical connection work?",
+      "expected": "Only skilled personnel should perform electrical work, with the machine at rest and appropriate safety procedures applied.",
+      "actual": "The context specifies that all electrical connection work must be carried out only by skilled persons on the machine at rest, as stated in the safety instructions on page 4.",
+      "score": 0.583,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 3.1469,
+          "page": 57
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "applied",
+        "appropriate",
+        "perform",
+        "personnel",
+        "procedures"
+      ],
+      "error": null
+    },
+    {
+      "id": 45,
+      "question": "What should be checked inside a terminal box before it is closed?",
+      "expected": "Ensure there are no foreign bodies, dirt, or moisture, and close unused cable entries and the box in a dust- and watertight manner.",
+      "actual": "Before closing the main terminal box, the following items should be checked:\n\n- The inside of the main terminal box must be free from dirt, moisture, and foreign debris.\n- All connection parts should be free of dust and dirt, as mentioned in the installation guidelines.\n\nThese checks ensure that the terminal box is clean and ready for operation, as outlined on page 56 and page 30 of the manual.",
+      "score": 0.4,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.9203,
+          "page": 56
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "bodies",
+        "cable",
+        "close",
+        "entries",
+        "manner",
+        "no",
+        "there",
+        "unused",
+        "watertight"
+      ],
+      "error": null
+    },
+    {
+      "id": 46,
+      "question": "Why should signal and power lines be appropriately segregated?",
+      "expected": "Proper segregation and screening are part of good installation practice and help control electromagnetic interference.",
+      "actual": "The context does not provide specific reasons for appropriately segregating signal and power lines. It only states that proper installation, which includes the segregation of signal and power lines, lies within the installer's responsibility. Further details on the reasons for this segregation are not included in the provided information.",
+      "score": 0.273,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.5071,
+          "page": 4
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "control",
+        "electromagnetic",
+        "good",
+        "help",
+        "interference",
+        "part",
+        "practice",
+        "screening"
+      ],
+      "error": null
+    },
+    {
+      "id": 47,
+      "question": "What voltage and frequency deviations are identified for Zone A in the safety instructions?",
+      "expected": "The manual cites voltage \u00b15% and frequency \u00b12%; exceeding these limits can increase temperature rise and affect electromagnetic compatibility.",
+      "actual": "The voltage and frequency deviations specified for Zone A are as follows:\n\n- Voltage: \u00b1 5%\n- Frequency: \u00b1 2%\n\nThis information is mentioned in the safety instructions on page 4 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.231,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 9.5215,
+          "page": 56
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "affect",
+        "cites",
+        "compatibility",
+        "electromagnetic",
+        "exceeding",
+        "increase",
+        "limits",
+        "rise",
+        "temperature",
+        "these"
+      ],
+      "error": null
+    },
+    {
+      "id": 48,
+      "question": "What type of main supply cable is required between a machine and frequency converter?",
+      "expected": "A symmetrical three-conductor screened cable is required to meet industrial radiated-emission requirements.",
+      "actual": "The main supply cable required to connect a machine to a frequency converter must be a symmetrical three conductor screened cable. This is necessary to fulfill the radiated emission requirements stated in the generic emission standard for industrial environments, EN 50081-2, as mentioned on page 59 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.909,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 8.8657,
+          "page": 59
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "meet"
+      ],
+      "error": null
+    },
+    {
+      "id": 49,
+      "question": "How should the main cable screen be earthed for frequency-converter applications?",
+      "expected": "Use 360-degree high-frequency earthing of the cable screen at cable entries at both the machine and frequency converter.",
+      "actual": "The proper method for earthing the main cable screen in frequency-converter applications is as follows:\n\n1. **360\u00b0 Earthing**: Achieve high-frequency earthing of the main cable by implementing a 360\u00b0 earthing of the cable screens at the cable entries in both the machine and the frequency converter. This is necessary to suppress electromagnetic disturbances.\n\n2. **Connection to Protective Earth (PE)**: Ensure that the cable screens are connected to protective earth (PE) to meet safety regulations.\n\nThis information is detailed on page 59 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.833,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.5175,
+          "page": 4
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "degree",
+        "use"
+      ],
+      "error": null
+    },
+    {
+      "id": 50,
+      "question": "Why must cable screens also be connected to protective earth?",
+      "expected": "In addition to high-frequency EMC earthing, connection to protective earth is required to meet safety regulations.",
+      "actual": "Cable screens should be connected to protective earth (PE) to meet safety regulations and to protect the machine frame from harmful or dangerous electrical potential (voltage) as stated in the context. This connection is essential for ensuring compliance with the EMC directive and for suppressing electromagnetic disturbances, as mentioned on page 59.",
+      "score": 0.583,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.349,
+          "page": 59
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "addition",
+        "earthing",
+        "frequency",
+        "high",
+        "required"
+      ],
+      "error": null
+    },
+    {
+      "id": 51,
+      "question": "What should be done with auxiliary cables in frequency-converter applications?",
+      "expected": "They should be screened, with suitable cable glands used for 360-degree high-frequency earthing at cable entries.",
+      "actual": "The context does not provide specific handling instructions for auxiliary cables in frequency converter applications. It mentions that auxiliary terminal boxes are attached to the machine frame and equipped with terminal blocks and cable glands, but it does not detail the proper handling procedures for the cables themselves in this specific application. \n\nFor more comprehensive guidance, additional information would be needed regarding the handling of auxiliary cables in frequency converter applications.",
+      "score": 0.25,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.0187,
+          "page": 59
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "360",
+        "degree",
+        "earthing",
+        "entries",
+        "high",
+        "screened",
+        "suitable",
+        "they",
+        "used"
+      ],
+      "error": null
+    },
+    {
+      "id": 52,
+      "question": "When is external motor-frame earthing used for potential equalization in frequency-converter applications?",
+      "expected": "It is used between the motor frame and driven machine unless both are mounted on the same metallic base.",
+      "actual": "External motor-frame earthing is used for potential equalization in frequency converter applications when the motor frame and the driven machine are not mounted on the same metallic base. This requirement is specified for motor frame sizes over IEC 280, where a specific type of conductor must be used for earthing, as detailed in the context.",
+      "score": 0.75,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.4048,
+          "page": 4
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "between",
+        "both",
+        "unless"
+      ],
+      "error": null
+    },
+    {
+      "id": 53,
+      "question": "What is the purpose of a commissioning report?",
+      "expected": "It records commissioning results and provides an important reference for future service, maintenance, fault finding, and warranty requests.",
+      "actual": "The purpose of a commissioning report in project management is to serve as a vital tool for future service, maintenance, and fault finding. It is essential for documenting the commissioning process, and it must be completed and filed before the commissioning is considered finalized. Additionally, the commissioning report is necessary for warranty requests to obtain warranty for the machine, as indicated on page 61 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.615,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.7117,
+          "page": 126
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "important",
+        "provides",
+        "records",
+        "reference",
+        "results"
+      ],
+      "error": null
+    },
+    {
+      "id": 54,
+      "question": "When is commissioning considered complete?",
+      "expected": "Commissioning is not considered finalized until an acceptable commissioning report has been documented and filed.",
+      "actual": "The completion of commissioning is determined by the following criteria:\n\n1. **Documentation of Commissioning Report**: \n   - An acceptable commissioning report must be documented and filed. This report is essential for future service, maintenance, and fault finding, and it must be available for warranty requests to obtain warranty for the machine (as stated on page 61).\n\n2. **Alignment Check**: \n   - The machine must be accurately aligned according to ABB alignment specifications, and the alignment protocol should be included in the commissioning report (as mentioned on page 61).\n\n3. **Mechanical Installation Checks**: \n   - The foundation must be checked for cracks and general condition, and the tightness of mounting bolts must be verified (as noted on page 61).\n   - Additional checks include ensuring the lubrication system is operational, the rotor turns freely, and there are no leaks in the cooling system (as detailed on page 61).\n\n4. **Verification of Systems**: \n   - All relevant systems, such as oil supply, cooling water, cabling, earth connections, and protection devices, must be verified (as outlined on page 64).\n\n5. **Insulation Resistance Measurements**: \n   - Insulation resistance of the windings and other equipment must be verified before the machine is started for the first time or after a long period of standstill (as indicated on page 64).\n\nThese criteria collectively ensure that the commissioning process is complete and that the machine is ready for operation.",
+      "score": 0.455,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 2.0662,
+          "page": 61
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "been",
+        "considered",
+        "finalized",
+        "has",
+        "not",
+        "until"
+      ],
+      "error": null
+    },
+    {
+      "id": 55,
+      "question": "What alignment check should be made before commissioning?",
+      "expected": "Review the alignment report and verify that the machine is accurately aligned according to ABB specifications.",
+      "actual": "Before commissioning, the following alignment checks are necessary:\n\n1. **Check Alignment Report**: \n   - Ensure that the machine is accurately aligned according to ABB alignment specifications as detailed in Chapter 3.6 Alignment.\n\n2. **Include Alignment Protocol**: \n   - The alignment protocol should always be included in the commissioning report.\n\n3. **Check Foundation and Mounting**:\n   - Verify that the machine is properly anchored to the foundation.\n   - Check for cracks in the foundation and the general condition of the foundation.\n   - Check the tightness of the mounting bolts.\n\n4. **Additional Checks** (when applicable):\n   - Ensure that the lubrication system is commissioned and running before the rotor is turned.\n   - If possible, turn the rotor by hand to ensure it turns freely and that no abnormal sounds are heard.\n   - Check the assembly of the main terminal box and cooling system.\n   - Verify the connection of oil and cooling water pipes and check for leaks when running.\n   - Check pressure and flow for oil and cooling water.\n\nThese steps are outlined in the commissioning and start-up section on page 61 of the manual.",
+      "score": 0.9,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 1.4403,
+          "page": 48
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "review"
+      ],
+      "error": null
+    },
+    {
+      "id": 56,
+      "question": "What foundation checks should be made before commissioning?",
+      "expected": "Check the foundation for cracks and general condition and verify the tightness of mounting bolts.",
+      "actual": "Before commissioning a project, the following foundation checks should be conducted:\n\n1. **Clean the Foundation**: Ensure that the foundation is clean and free from debris.\n2. **Flatness and Parallelism**: The foundations must be flat and plain parallel within 0.1 mm (4.0 mil) or better.\n3. **Vibration Check**: The foundation should be free from external vibration.\n4. **Cracks and Condition**: Check for cracks in the foundation and assess the general condition of the foundation.\n5. **Tightness of Mounting Bolts**: Verify that the mounting bolts are tight.\n\nThese checks are essential to ensure the proper installation and functioning of the machine as outlined in the manual [ABB Manual for Induction Motors and Generators EN (4), p. 42 and p. 61].",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.2556,
+          "page": 42
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 57,
+      "question": "What lubrication-system check is required before the rotor is turned?",
+      "expected": "Where applicable, verify that the lubrication system has been commissioned and is operating before turning the rotor.",
+      "actual": "Before turning the rotor, the following lubrication system checks are required:\n\n1. **Commissioning of the Lubrication System**: Ensure that the lubrication system is commissioned and is running before the rotor is turned.\n2. **Oil Reservoirs**: For sleeve bearings, the oil reservoirs and possible oil supply systems must be filled with the recommended oil to the correct level, and the oil supply system should be turned on.\n\nThese checks are outlined in the context on pages 63 and 61.",
+      "score": 0.545,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.102,
+          "page": 63
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "applicable",
+        "been",
+        "has",
+        "operating",
+        "verify"
+      ],
+      "error": null
+    },
+    {
+      "id": 58,
+      "question": "What should be checked if the rotor can be turned by hand before commissioning?",
+      "expected": "Verify that the rotor turns freely and that no abnormal sound is heard.",
+      "actual": "Before commissioning, the following checks should be performed on a rotor that can be turned by hand:\n\n1. **Free Rotation**: Turn the rotor by hand to ensure that it turns freely.\n2. **Abnormal Sounds**: Listen for any abnormal sounds while turning the rotor.\n\nThese checks are important to confirm the rotor's condition before the machine is started up for the first time, as mentioned in the context on page 63.",
+      "score": 0.5,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 10.0179,
+          "page": 61
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "heard",
+        "no",
+        "sound",
+        "verify"
+      ],
+      "error": null
+    },
+    {
+      "id": 59,
+      "question": "What fluid-system checks are recommended before commissioning?",
+      "expected": "Check oil and cooling-water pipe connections for leaks and verify appropriate pressure and flow.",
+      "actual": "### Recommended Fluid System Checks Before Commissioning\n\n1. **Oil Supply System**:\n   - Ensure the oil supply systems are filled with the recommended oil to the correct level.\n   - Turn on the oil supply system. \n\n2. **Cooling Water (for water-cooled machines)**:\n   - Turn on the cooling water.\n   - Check the tightness of the flanges and the cooling unit.\n\n3. **Sealing Openings**:\n   - Seal any openings where cables are not connected to terminal boxes or flanges that are not connected to the piping.\n   - Clean and dry the coolers and the piping within the machine before sealing, using warm and dry air to blow through the pipes.\n\nThese checks are essential to ensure proper operation and safety of the system as outlined in the commissioning and start-up procedures on pages 64 and 34 of the manual.",
+      "score": 0.364,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 3.3429,
+          "page": 64
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "appropriate",
+        "connections",
+        "flow",
+        "leaks",
+        "pipe",
+        "pressure",
+        "verify"
+      ],
+      "error": null
+    },
+    {
+      "id": 60,
+      "question": "When must machine insulation resistance be measured?",
+      "expected": "Before first start-up, after a long standstill, and as part of general maintenance work.",
+      "actual": "The insulation resistance of a machine should be measured in the following situations:\n\n1. **Before first startup**: The insulation resistance must be measured before a machine is started up for the first time.\n2. **After long periods of standstill**: It should be measured after the machine has been inactive for an extended time.\n3. **During general maintenance**: The insulation resistance should also be measured as part of general maintenance work, as indicated on page 61. \n\nThese measurements are crucial to ensure the proper functioning and safety of the machine.",
+      "score": 0.909,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.1781,
+          "page": 92
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "start"
+      ],
+      "error": null
+    },
+    {
+      "id": 61,
+      "question": "When can the power cables be permanently connected to the main terminal box?",
+      "expected": "After the stator insulation resistance has been measured.",
+      "actual": "### Procedure for Permanently Connecting Power Cables to the Main Terminal Box\n\n1. **Mechanical Connection of Main Terminal Box**:\n   - Lift the main terminal box using a suitable lifting device from the lifting eyes.\n   - Ensure all connection parts are free of dust and dirt.\n   - Prepare the delivered bolts and washers for installation.\n   - Position the main terminal box on the machine frame where it needs to be connected.\n   - Connect the main terminal box to the machine housing using the screws provided, ensuring that the isolation sealing is in place.\n   - Tighten all screws to a maximum of 200 Nm (as noted on page 30).\n\n2. **Electrical Connection of Stator Cables (for NEMA main terminal box only)**:\n   - After mechanically connecting the main terminal box, pull the stator cables through the ceiling membrane.\n   - Check the markings of the stator cables and the terminals.\n   - Connect the stator cables to the corresponding terminals according to the cable markings (U1, V1, W1 or L1, L2, L3).\n   - Tighten the preinstalled screws to a maximum of 80 Nm (as noted on page 30).\n\n### Timeline\nThe context does not provide specific timelines for each step of the connection process. Therefore, the duration for completing these tasks is not specified.",
+      "score": 0.286,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 8.5398,
+          "page": 30
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "been",
+        "has",
+        "insulation",
+        "measured",
+        "resistance"
+      ],
+      "error": null
+    },
+    {
+      "id": 62,
+      "question": "What should be checked on main power cable connections during commissioning?",
+      "expected": "Check cable-lug bolt torque, cable routing, stress relief, and auxiliary equipment connections.",
+      "actual": "During commissioning, the following checks should be performed on main power cable connections:\n\n1. **Tightening of Cable Lug Bolts**: Ensure that the cable lug bolts are tightened with the proper torque.\n2. **Routing of Power Cables**: Verify that the power cables are suitably routed.\n3. **Stress Relief of Power Cables**: Check that the power cables are stress-relieved in a proper way.\n4. **Connections of Auxiliary Equipment**: Inspect the connections of the auxiliary equipment.\n\nThese checks are outlined in the context on page 61.",
+      "score": 0.909,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.2363,
+          "page": 56
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "bolt"
+      ],
+      "error": null
+    },
+    {
+      "id": 63,
+      "question": "What should be done during the first start if abnormal noise or vibration occurs?",
+      "expected": "Stop or disconnect the machine if necessary, determine the cause, and consult the manufacturer when appropriate.",
+      "actual": "If abnormal noise or vibration occurs during the initial startup, the following steps should be taken:\n\n1. **Shut Down the Machine**: Immediately stop the machine to prevent further issues.\n2. **Investigate the Cause**: Determine the reason for the deviations in operation.\n3. **Consult the Manufacturer**: If necessary, seek assistance from the machine's manufacturer for guidance.\n\nAdditionally, it is important to monitor the machine closely during the first days of operation for any changes in vibration or temperature levels, as noted on page 65. Do not disengage any protective devices while the machine is running or during the investigation of unexpected functions.",
+      "score": 0.8,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.969,
+          "page": 65
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "appropriate",
+        "disconnect"
+      ],
+      "error": null
+    },
+    {
+      "id": 64,
+      "question": "Should protective devices be disabled during a trial run?",
+      "expected": "No. Protective devices must not be defeated even during trial operation.",
+      "actual": "No, protective devices should not be disabled during a trial run of the equipment. It is explicitly stated that \"Do not disengage any protective devices during running of the machine, or during search for a reason for unexpected function of the machine\" as mentioned on page 65.",
+      "score": 0.6,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.0246,
+          "page": 65
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "defeated",
+        "even",
+        "must",
+        "operation"
+      ],
+      "error": null
+    },
+    {
+      "id": 65,
+      "question": "What coupled-mode vibration severity is described as satisfactory in the safety instructions?",
+      "expected": "Vrms of 4.5 mm/s or less is described as satisfactory according to ISO 3945, subject to the stated application context.",
+      "actual": "The satisfactory coupled-mode vibration severity is described as having a Vrms (root mean square velocity) of less than or equal to 4.5 mm/s, according to ISO 3945. This is considered acceptable in coupled-mode operation for piston engine generators, as mentioned on page 4 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.667,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.7511,
+          "page": 5
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "application",
+        "context",
+        "stated",
+        "subject"
+      ],
+      "error": null
+    },
+    {
+      "id": 66,
+      "question": "What operating data should be routinely logged?",
+      "expected": "Log data such as load, temperatures, vibrations, and other relevant operating conditions.",
+      "actual": "The operating data that should be routinely logged for system monitoring includes:\n\n- Load\n- Temperatures (specifically of bearings and windings)\n- Vibrations\n\nThis information serves as a useful basis for maintenance and service, as mentioned on page 70 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.5,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5208,
+          "page": 70
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "conditions",
+        "log",
+        "other",
+        "relevant",
+        "such"
+      ],
+      "error": null
+    },
+    {
+      "id": 67,
+      "question": "Why is operating-data logging useful?",
+      "expected": "It provides a basis for maintenance, service planning, condition assessment, and troubleshooting.",
+      "actual": "The benefits of operating data logging, as indicated in the context, include:\n\n- **Basis for Maintenance and Service**: Logging operating data such as load, temperatures, and vibrations provides a useful basis for maintenance and service decisions. This data helps in identifying potential issues before they lead to failures.\n\n- **Intensive Supervision During Initial Operation**: During the first period of operation (up to 200 hours), intensive supervision is recommended, which includes frequent checks of temperatures, load, current, cooling, lubrication, and vibration. This helps ensure the machine operates within safe parameters.\n\n- **Record Keeping**: A record of supervision inspections should be filed and saved for further reference, which aids in tracking the machine's performance over time and can inform future maintenance actions.\n\nThese points are discussed in the context of normal supervision of operation and the importance of monitoring various parameters for effective maintenance [Document Name, p. 70].",
+      "score": 0.5,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5413,
+          "page": 127
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "assessment",
+        "condition",
+        "planning",
+        "troubleshooting"
+      ],
+      "error": null
+    },
+    {
+      "id": 68,
+      "question": "What should happen to anti-condensation heaters when the machine is shut down?",
+      "expected": "Where applicable, switch them on to help prevent condensation inside the machine.",
+      "actual": "When shutting down the machine, the following actions should be taken regarding the anti-condensation heaters:\n\n1. **Switch on the anti-condensation heaters** if applicable, to avoid condensation inside the machine. This is particularly important when the machine is not in operation, as indicated on page 71.\n2. Ensure that the anti-condensation heaters are interlocked so that they can only be energized when the motor is de-energized, as mentioned on page 10.\n\nAdditionally, if the machine is equipped with anti-condensation heaters that do not self-regulate, measures should be taken to control the inside motor housing temperature after the motor is shut down, as noted on page 10.",
+      "score": 0.625,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.0339,
+          "page": 68
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "help",
+        "prevent",
+        "them"
+      ],
+      "error": null
+    },
+    {
+      "id": 69,
+      "question": "What should normally happen to cooling-water supply when a water-cooled machine is shut down?",
+      "expected": "The cooling-water supply should be switched off as instructed to avoid condensation inside the machine.",
+      "actual": "When a water-cooled machine is shut down, the cooling water supply is switched off to avoid condensation inside the machine, as stated on page 68 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.9,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 9.1451,
+          "page": 64
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "instructed"
+      ],
+      "error": null
+    },
+    {
+      "id": 70,
+      "question": "What is the main objective of preventive maintenance?",
+      "expected": "To keep the machine operating reliably, identify developing problems, and plan service actions to minimize unplanned downtime.",
+      "actual": "The primary goal of preventive maintenance is to:\n\n- Ensure that the machine functions reliably without any unforeseen actions or interventions.\n- Estimate and plan service actions to minimize downtime.\n\nThis information is detailed on page 73 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.538,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.3926,
+          "page": 74
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "developing",
+        "identify",
+        "keep",
+        "operating",
+        "problems",
+        "unplanned"
+      ],
+      "error": null
+    },
+    {
+      "id": 71,
+      "question": "What should be monitored intensively after commissioning or maintenance?",
+      "expected": "Bearing and winding temperatures, load, current, cooling, lubrication, and vibration should be checked frequently.",
+      "actual": "After equipment commissioning or maintenance, the following key factors should be monitored intensively:\n\n1. **Bearing Temperatures**: Check the temperatures of the bearings frequently.\n2. **Winding Temperatures**: Monitor the temperatures of the stator windings.\n3. **Load**: Observe the load on the machine.\n4. **Current**: Check the current being drawn by the machine.\n5. **Cooling**: Ensure that the cooling system is functioning properly.\n6. **Lubrication**: Verify that lubrication is adequate.\n7. **Vibration Levels**: Monitor the vibration levels of the machine.\n\nThis intensive supervision should occur during the first period of operation, which is defined as the first 200 hours, as noted on page 70.",
+      "score": 0.9,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.2691,
+          "page": 69
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "checked"
+      ],
+      "error": null
+    },
+    {
+      "id": 72,
+      "question": "What does maintenance level L1 involve?",
+      "expected": "L1 consists mainly of visual inspections and light maintenance intended to identify developing problems early.",
+      "actual": "### Tasks and Responsibilities of Level 1 (L1) Maintenance\n\nLevel 1 maintenance consists of the following tasks and responsibilities:\n\n- **Visual Inspections**: Conduct quick checks to identify any developing problems before they lead to failures or unscheduled maintenance breaks.\n- **Light Maintenance**: Perform minor maintenance tasks as necessary.\n- **Suggestions for Future Maintenance**: Provide recommendations for maintenance issues that should be addressed in the next larger overhaul.\n\nThe estimated duration for Level 1 maintenance is approximately 4 to 8 hours, depending on the type and installation of the machine (as noted on page 75). \n\nThe first Level 1 maintenance should be performed after 4,000 equivalent operating hours or six months after commissioning, and subsequently, it should be performed yearly halfway between Level 2 maintenances (as mentioned on page 75).",
+      "score": 0.75,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.247,
+          "page": 75
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "early",
+        "intended",
+        "mainly"
+      ],
+      "error": null
+    },
+    {
+      "id": 73,
+      "question": "When should the first L1 maintenance be performed?",
+      "expected": "After 4,000 equivalent operating hours or six months after commissioning, whichever criterion applies first under the maintenance program.",
+      "actual": "The first Level 1 (L1) maintenance should be performed after 4,000 equivalent operating hours or six months after commissioning, as stated on page 75 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.667,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5553,
+          "page": 75
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "applies",
+        "criterion",
+        "program",
+        "under",
+        "whichever"
+      ],
+      "error": null
+    },
+    {
+      "id": 74,
+      "question": "How long does L1 maintenance typically take?",
+      "expected": "Approximately 4 to 8 hours, depending on machine type, installation, and inspection depth.",
+      "actual": "The typical duration of Level 1 (L1) maintenance is estimated to last approximately 4 to 8 hours, depending on the type and installation of the machine and the depth of the inspections, as mentioned on page 74.",
+      "score": 0.875,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5829,
+          "page": 74
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "inspection"
+      ],
+      "error": null
+    },
+    {
+      "id": 75,
+      "question": "What does maintenance level L2 involve?",
+      "expected": "L2 mainly consists of inspections, tests, and small maintenance tasks to identify operating problems and make minor repairs.",
+      "actual": "### Tasks and Responsibilities for Level 2 (L2) Maintenance\n\nLevel 2 (L2) maintenance involves the following tasks and responsibilities:\n\n- **Inspections and Tests**: Conduct thorough inspections and tests to identify any operational issues with the machine.\n- **Small Maintenance Tasks**: Perform minor repairs to ensure uninterrupted operation.\n- **Duration**: The maintenance can be estimated to last approximately 8 - 16 hours, depending on the type and installation of the machine and the amount of servicing required.\n- **Tools Required**: Use normal servicing tools, including:\n  - Multimeter\n  - Torque wrench\n  - Insulation resistance tester\n- **Preparations**: Prepare for maintenance by opening the inspection covers and bearings if necessary.\n\nThe first L2 maintenance should be performed after 8,000 equivalent operating hours or one year after commissioning, and subsequently, it should be performed yearly or after every 8,000 equivalent operating hours, as indicated in the maintenance intervals table.",
+      "score": 0.714,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.247,
+          "page": 75
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "consists",
+        "mainly",
+        "make",
+        "problems"
+      ],
+      "error": null
+    },
+    {
+      "id": 76,
+      "question": "When should the first L2 maintenance be performed?",
+      "expected": "After 8,000 equivalent operating hours or one year after commissioning.",
+      "actual": "The first Level 2 maintenance should be performed after 8,000 equivalent operating hours or one year after commissioning, as stated on page 75.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.9718,
+          "page": 75
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 77,
+      "question": "How long does L2 maintenance typically take?",
+      "expected": "Approximately 8 to 16 hours.",
+      "actual": "The typical duration of Level 2 (L2) maintenance is not explicitly stated in the provided context. It only mentions that the first L2 maintenance should be performed after 8,000 equivalent operating hours or one year after commissioning, and subsequently yearly or after every 8,000 equivalent operating hours. However, the specific duration for L2 maintenance is not provided.",
+      "score": 0.333,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5399,
+          "page": 74
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "16",
+        "approximately"
+      ],
+      "error": null
+    },
+    {
+      "id": 78,
+      "question": "What additional tools may be used for L2 maintenance?",
+      "expected": "Typical tools include normal servicing tools, a multimeter, torque wrench, and insulation-resistance tester.",
+      "actual": "The tools available for L2 maintenance include:\n\n- Normal servicing tools (e.g., wrenches and screwdrivers)\n- An endoscope\n- An oscilloscope\n\nThis information is detailed on page 75 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.364,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.7089,
+          "page": 74
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "insulation",
+        "multimeter",
+        "resistance",
+        "tester",
+        "torque",
+        "typical",
+        "wrench"
+      ],
+      "error": null
+    },
+    {
+      "id": 79,
+      "question": "What does maintenance level L3 involve?",
+      "expected": "L3 includes extensive inspections, tests, larger maintenance tasks, repairs, and replacement of worn parts.",
+      "actual": "### Tasks and Responsibilities of Level 3 (L3) Maintenance\n\nLevel 3 maintenance consists of the following tasks and responsibilities:\n\n- **Extensive Inspections**: Conduct thorough inspections to identify any issues that may have arisen during Level 1 (L1) and Level 2 (L2) maintenance.\n- **Testing**: Perform tests to assess the condition of the machine and its components.\n- **Larger Maintenance Tasks**: Address and execute larger maintenance tasks that are necessary based on findings from previous maintenance levels.\n- **Repair Problems**: Repair any problems encountered during L1 and L2 maintenance.\n- **Replace Worn Parts**: Replace parts that have been subjected to wear.\n\n### Duration\n- The maintenance can be estimated to last approximately **16 to 40 hours**, depending on the type and installation of the machine and the extent of repairs and replacements needed.\n\n### Tools Required\n- Tools for L3 maintenance include those used for L2 maintenance, plus:\n  - Endoscope\n  - Oscilloscope\n\n### Preparations\n- Preparations involve opening inspection covers, bearings, and the water cooler if applicable.\n\n### Maintenance Interval\n- Level 3 maintenance should be performed after every **24,000 equivalent operating hours** or at a **three to five year interval**. When L3 maintenance is conducted, it replaces any L1 or L2 maintenance otherwise scheduled, without affecting their rotation (as noted on page 75).",
+      "score": 0.833,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.247,
+          "page": 75
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "includes",
+        "replacement"
+      ],
+      "error": null
+    },
+    {
+      "id": 80,
+      "question": "When should L3 maintenance be performed?",
+      "expected": "Every 24,000 equivalent operating hours or at a three-to-five-year interval.",
+      "actual": "The schedule for performing Level 3 (L3) maintenance is as follows:\n\n- **Frequency**: L3 maintenance should be performed after every **24,000 equivalent operating hours** or at a **three to five year interval**.\n- **Replacement**: When L3 maintenance is conducted, it replaces the L1 or L2 maintenance otherwise scheduled, and it leaves their rotation unaffected, as noted in the maintenance intervals.\n\nThis information can be found on page 75 of the ABB Manual for Induction Motors and Generators.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5681,
+          "page": 75
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 81,
+      "question": "How long does L3 maintenance typically take?",
+      "expected": "Approximately 16 to 40 hours.",
+      "actual": "The typical duration of Level 3 (L3) maintenance is estimated to last approximately 16 to 40 hours, depending on the type and installation of the machine and the amount of repairs and replacements to be done, as mentioned on page 75.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5995,
+          "page": 74
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 82,
+      "question": "What does maintenance level L4 aim to achieve?",
+      "expected": "L4 performs extensive inspection and maintenance intended to restore the machine to a reliable operating condition.",
+      "actual": "The context does not provide specific information regarding the objectives of maintenance level L4. Therefore, I cannot answer the question based on the provided context.",
+      "score": 0.182,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.9299,
+          "page": 74
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "condition",
+        "extensive",
+        "inspection",
+        "intended",
+        "machine",
+        "operating",
+        "performs",
+        "reliable",
+        "restore"
+      ],
+      "error": null
+    },
+    {
+      "id": 83,
+      "question": "When should L4 maintenance be performed?",
+      "expected": "After every 80,000 equivalent operating hours.",
+      "actual": "The schedule for performing Level 4 (L4) maintenance is as follows:\n\n- L4 maintenance should be performed after every **80,000 equivalent operating hours**.\n- When L4 maintenance is conducted, it replaces the L1, L2, or L3 maintenance otherwise scheduled, and it leaves their rotation unaffected, as noted on page 75.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.4986,
+          "page": 75
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 84,
+      "question": "How long does L4 maintenance typically take?",
+      "expected": "Approximately 40 to 80 hours, depending mainly on machine condition and required reconditioning.",
+      "actual": "The typical duration of Level 4 (L4) maintenance is estimated to last approximately 40 to 80 hours, depending mostly on the condition of the machine and the needed reconditioning actions, as mentioned on page 75.",
+      "score": 0.8,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5076,
+          "page": 74
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "mainly",
+        "required"
+      ],
+      "error": null
+    },
+    {
+      "id": 85,
+      "question": "What do V, C, D, R, and T mean in the maintenance program?",
+      "expected": "V means visual checking, C cleaning, D disassembling and assembling, R reconditioning or replacement, and T testing and measurement.",
+      "actual": "The letters in the maintenance program represent the following:\n\n- **V** = Visual checking\n- **C** = Cleaning\n- **D** = Disassembling and assembling\n- **R** = Reconditioning or replacement\n- **T** = Testing and measurement\n\nThis information is provided on page 75 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.9,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.1681,
+          "page": 73
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "means"
+      ],
+      "error": null
+    },
+    {
+      "id": 86,
+      "question": "What can cause a low insulation-resistance reading even when insulation itself is intact?",
+      "expected": "Excess humidity or dirt can lower the measured insulation resistance.",
+      "actual": "Factors that can lead to low insulation resistance readings despite intact insulation include:\n\n- Excess humidity\n- Dirt\n\nThese factors can cause low insulation resistance values even when the actual insulation is intact, as noted on page 92.",
+      "score": 0.714,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 3.9736,
+          "page": 90
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "lower",
+        "measured"
+      ],
+      "error": null
+    },
+    {
+      "id": 87,
+      "question": "How does winding temperature affect insulation resistance?",
+      "expected": "Insulation resistance decreases as winding temperature rises; the manual states it approximately halves for every 10 to 15 K temperature rise.",
+      "actual": "The effect of winding temperature on insulation resistance is as follows:\n\n- The insulation resistance value decreases as the winding temperature rises.\n- Specifically, the resistance is halved for every 10 to 15 K increase in temperature.\n- When the winding temperature is below 50\u00baC (122\u00baF), the insulation resistance is considered to be independent of temperature. However, high temperatures can cause unpredictable changes in the polarization index, which is related to insulation resistance [Document Name, p. 92]. \n\nIn summary, higher temperatures lead to lower insulation resistance values, and this relationship is significant for operational assessments.",
+      "score": 0.643,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.0916,
+          "page": 94
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "approximately",
+        "halves",
+        "manual",
+        "rise",
+        "states"
+      ],
+      "error": null
+    },
+    {
+      "id": 88,
+      "question": "What minimum insulation resistance guideline is given for a wound rotor at 40\u00b0C?",
+      "expected": "For induction machines with wound rotors, R after 1\u201310 minutes at 40\u00b0C should be greater than 5 M\u03a9.",
+      "actual": "The minimum insulation resistance guideline for a wound rotor at 40\u00b0C is greater than 5 M\u03a9, as stated in the context.",
+      "score": 0.4,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 8.0272,
+          "page": 92
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "10",
+        "after",
+        "induction",
+        "machines",
+        "minutes",
+        "rotors"
+      ],
+      "error": null
+    },
+    {
+      "id": 89,
+      "question": "What minimum insulation resistance guideline is given for a new stator at 40\u00b0C?",
+      "expected": "A new stator should normally exceed 1000 M\u03a9 after 1\u201310 minutes at 40\u00b0C; above 100 M\u03a9 may be accepted under extremely warm and humid conditions.",
+      "actual": "The minimum insulation resistance guideline for a new stator at 40\u00b0C is:\n\n- **R(1-10 min at 40 \u00b0C) > 1000 M\u03a9**\n\nIf the measuring conditions are extremely warm and humid, values above 100 M\u03a9 can be accepted, as noted on page 92 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.667,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.6226,
+          "page": 92
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "after",
+        "exceed",
+        "may",
+        "minutes",
+        "normally",
+        "under"
+      ],
+      "error": null
+    },
+    {
+      "id": 90,
+      "question": "What minimum insulation resistance guideline is given for a used stator at 40\u00b0C?",
+      "expected": "A used stator should normally exceed 100 M\u03a9 after 1\u201310 minutes at 40\u00b0C.",
+      "actual": "The minimum insulation resistance guideline for a used stator at 40\u00b0C is:\n\n- **R(1-10 min at 40 \u00b0C) > 100 M\u03a9** \n\nThis information is provided on page 92 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.556,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.3814,
+          "page": 92
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "after",
+        "exceed",
+        "minutes",
+        "normally"
+      ],
+      "error": null
+    },
+    {
+      "id": 91,
+      "question": "What test voltage and duration are specified for stator winding insulation-resistance measurement?",
+      "expected": "The manual specifies 1000 VDC for one minute before recording the value.",
+      "actual": "The specified test voltage and duration for measuring insulation resistance of stator windings are as follows:\n\n- **Test Voltage**: The test voltage should be applied for 1 minute or longer.\n- **Resistance Values**: For new stators, the insulation resistance should exceed 1000 M\u03a9 at 40 \u00b0C, and for used stators, it should exceed 100 M\u03a9, as indicated on page 92. \n\nThe context does not specify an exact test voltage for the stator windings, only that the test should be performed for 1 minute or longer.",
+      "score": 0.222,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 8.5344,
+          "page": 92
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "before",
+        "manual",
+        "one",
+        "recording",
+        "specifies",
+        "value",
+        "vdc"
+      ],
+      "error": null
+    },
+    {
+      "id": 92,
+      "question": "What should be done to winding phases after an insulation-resistance measurement?",
+      "expected": "Earth the winding phases briefly to discharge them.",
+      "actual": "After conducting an insulation resistance measurement, the following actions should be taken for the winding phases:\n\n1. **Earth the Winding Phases**: The winding phases must be earthed briefly in order to discharge them. This step is crucial to ensure safety and prevent any residual voltage from causing harm.\n\nThis information is detailed on page 93 of the ABB Manual for Induction Motors and Generators.",
+      "score": 1.0,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 7.0891,
+          "page": 89
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [],
+      "error": null
+    },
+    {
+      "id": 93,
+      "question": "Why is bearing insulation important?",
+      "expected": "It helps prevent circulating bearing currents induced by shaft voltages, reducing the risk of bearing damage.",
+      "actual": "### Importance of Bearing Insulation\n\nBearing insulation is crucial for the following reasons:\n\n1. **Prevention of Bearing Damage**: Good insulation is necessary to eliminate the possibility of circulating bearing currents, which might be induced by shaft voltages. The insulation of the non-drive end bearing cuts the path of the bearing current, thus eliminating the risk of bearing damages due to these currents (as mentioned on page 87).\n\n2. **Safety of Electrical Components**: If the shaft ends are insulated from the frame, it could lead to an electrically floating shaft with an unknown electrical potential, posing a potential source of damage (also noted on page 87).\n\n3. **Maintenance Checks**: Regular checks of the cleanliness of the bearing insulation are important to avoid a decrease in insulation resistance caused by foreign agents (salt, dirt) building up on the insulation surface (as stated on page 89).\n\n4. **Resistance Measurement**: The insulation resistance should be measured to ensure it is acceptable, with a resistance value of more than 10 k\u03a9 being considered acceptable (as indicated on page 88).\n\nIn summary, bearing insulation is vital for preventing electrical damage, ensuring safety, and maintaining the integrity of the bearings through regular maintenance checks.",
+      "score": 0.727,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 3.8329,
+          "page": 87
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "helps",
+        "prevent",
+        "reducing"
+      ],
+      "error": null
+    },
+    {
+      "id": 94,
+      "question": "Why is the non-drive-end bearing commonly insulated?",
+      "expected": "Its insulation interrupts the path of bearing current and helps prevent bearing-current damage.",
+      "actual": "The purpose of insulating the non-drive-end bearing is to eliminate the possibility of circulating bearing currents, which might be induced by shaft voltages. The insulation cuts the path of the bearing current, thus reducing the risk of bearing damages due to these currents. It is important to note that both shaft ends should not be insulated from the frame, as an electrically floating shaft could have an unknown electrical potential compared to the surroundings, posing a potential source of damage. This information is detailed on page 87 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.556,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 3.8972,
+          "page": 88
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "helps",
+        "interrupts",
+        "its",
+        "prevent"
+      ],
+      "error": null
+    },
+    {
+      "id": 95,
+      "question": "Are all ABB machines equipped with insulated bearings?",
+      "expected": "No. The manual notes that not all machines have insulated bearings.",
+      "actual": "No, not all ABB machines are equipped with insulated bearings. This is explicitly stated in the context: \"Not all machines are equipped with insulated bearings\" [p. 87].",
+      "score": 0.667,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.3427,
+          "page": 87
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "have",
+        "manual",
+        "notes"
+      ],
+      "error": null
+    },
+    {
+      "id": 96,
+      "question": "How can personnel identify a machine fitted with insulated bearings?",
+      "expected": "Machines with insulated bearings have a sticker indicating the insulated bearing.",
+      "actual": "Personnel can identify machines equipped with insulated bearings by looking for a sticker that indicates the presence of an insulated bearing. This information is noted in the context provided.",
+      "score": 0.714,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 4.5152,
+          "page": 87
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "have",
+        "indicating"
+      ],
+      "error": null
+    },
+    {
+      "id": 97,
+      "question": "What should be done if a bearing needs replacement?",
+      "expected": "Use proper removal and fitting methods and contact ABB Motors and Generators Service when bearing replacement is required.",
+      "actual": "The context does not provide specific steps for replacing a bearing. It mentions actions related to bearing failure, such as replacing bearing parts or shells, but does not outline a detailed procedure for the replacement process itself. Therefore, the exact steps to replace a bearing are missing from the provided information.",
+      "score": 0.154,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 6.0585,
+          "page": 109
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "abb",
+        "contact",
+        "fitting",
+        "generators",
+        "methods",
+        "motors",
+        "proper",
+        "removal",
+        "required",
+        "service",
+        "use"
+      ],
+      "error": null
+    },
+    {
+      "id": 98,
+      "question": "What condition should slip-ring surfaces have?",
+      "expected": "They should be smooth; if not, the manual states that they should be smoothed on a lathe.",
+      "actual": "The ideal condition for slip-ring surfaces is that they should be smooth. Under ideal conditions, an even layer of brown patina will form on the slip rings during the first few hours of operation, as mentioned on page 70.",
+      "score": 0.25,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 5.801,
+          "page": 70
+        }
+      ],
+      "passed": false,
+      "missing_tokens": [
+        "if",
+        "lathe",
+        "manual",
+        "not",
+        "smoothed",
+        "states"
+      ],
+      "error": null
+    },
+    {
+      "id": 99,
+      "question": "When should carbon brushes be replaced?",
+      "expected": "Their wear should be tracked and they should be replaced before the wear limit is reached.",
+      "actual": "You should replace carbon brushes before the wear limit is reached, as indicated in the context. Additionally, it is important to verify that the brushes are not sparking. This information is found on page 70 of the ABB Manual for Induction Motors and Generators.",
+      "score": 0.571,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 2.1448,
+          "page": 95
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "replaced",
+        "they",
+        "tracked"
+      ],
+      "error": null
+    },
+    {
+      "id": 100,
+      "question": "What contaminants must be kept out of the slip-ring housing?",
+      "expected": "Water, grease, oil, and dust must not be allowed to enter the housing.",
+      "actual": "The contaminants that should be excluded from the slip ring housing include:\n\n- Water\n- Grease\n- Oil\n- Dust\n\nThese contaminants should not be permitted to enter the housing, as stated in the context on page 70.",
+      "score": 0.778,
+      "citations": [
+        {
+          "document_id": "55b13a6b-d2b6-4d16-bd08-04cb9f258fc7",
+          "document_name": "ABB Manual for Induction Motors and Generators EN (4)",
+          "chunk_index": 0,
+          "bm25_score": 2.1929,
+          "page": 97
+        }
+      ],
+      "passed": true,
+      "missing_tokens": [
+        "allowed",
+        "must"
+      ],
+      "error": null
+    }
+  ]
+}
