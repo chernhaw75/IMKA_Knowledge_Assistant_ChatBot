@@ -1,5 +1,6 @@
 import hashlib
 import json
+import logging
 import os
 import tempfile
 from contextlib import asynccontextmanager
@@ -31,6 +32,12 @@ from .schemas import HealthResponse, IngestResponse
 
 load_dotenv()
 
+logging.basicConfig(
+    level=getattr(logging, os.getenv("LOG_LEVEL", "INFO").upper(), logging.INFO),
+    format="%(asctime)s %(levelname)s %(name)s %(message)s",
+)
+logger = logging.getLogger(__name__)
+
 ALLOWED_EXTENSIONS = {".pdf", ".txt", ".md", ".docx", ".doc"}
 DOCLING_ALLOWED_EXTENSIONS = {".pdf"}
 
@@ -56,6 +63,19 @@ app.include_router(auth_module.router)
 app.include_router(chat_module.router)
 app.include_router(feedback_module.router)
 app.include_router(openai_compat.router)
+
+
+@app.middleware("http")
+async def log_server_errors(request, call_next):
+    try:
+        response = await call_next(request)
+    except Exception:
+        logger.exception("Unhandled request error: %s %s", request.method, request.url.path)
+        raise
+
+    if response.status_code >= 500:
+        logger.error("Server error response: %s %s -> %s", request.method, request.url.path, response.status_code)
+    return response
 
 
 @app.get("/api/health", response_model=HealthResponse)
@@ -127,6 +147,7 @@ async def upload_documents(
                 original_names=original_names,
             )
         except Exception as e:
+            logger.exception("Document ingestion failed: pipeline=%s file_count=%d", pipeline, len(temp_paths))
             raise HTTPException(status_code=500, detail=f"Ingestion failed: {e}") from e
 
         if not result:
@@ -155,6 +176,7 @@ def delete_document(document_id: str):
             ),
         )
     except Exception as e:
+        logger.exception("Document deletion failed: document_id=%s", document_id)
         raise HTTPException(status_code=500, detail=f"Failed to delete vectors: {e}") from e
 
     remove_document(document_id)

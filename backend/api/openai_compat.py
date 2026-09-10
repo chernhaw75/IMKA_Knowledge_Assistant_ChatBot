@@ -7,6 +7,7 @@ own frontend): `conversation_id` and `message_id` for grouping/targeting
 chat-log rows, and `citations` with the RAG source documents.
 """
 import json
+import logging
 import time
 import uuid
 from typing import Annotated, AsyncIterator, Literal
@@ -24,6 +25,7 @@ from rag.intent import classify_intent
 from rag.pipeline import build_answer_chain, prepare_context
 
 router = APIRouter(tags=["openai-compat"])
+logger = logging.getLogger(__name__)
 
 MODEL_ID = "rag-pipeline"
 
@@ -60,6 +62,7 @@ async def _get_or_create_conversation(db: AsyncSession, user_id: str, conversati
     conversation = Conversation(user_id=user_id)
     db.add(conversation)
     await db.flush()
+    await db.commit()
     return conversation
 
 
@@ -126,8 +129,12 @@ async def chat_completions(
             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
         )
 
-    answer, citations = await _generate_answer(query, trace_metadata)
-    message_id = await _persist_exchange(db, conversation, query, answer, citations)
+    try:
+        answer, citations = await _generate_answer(query, trace_metadata)
+        message_id = await _persist_exchange(db, conversation, query, answer, citations)
+    except Exception:
+        logger.exception("Non-streaming chat failed: user_id=%s conversation_id=%s", user_id, conversation.id)
+        raise
 
     completion_id = f"chatcmpl-{uuid.uuid4().hex}"
     return {
@@ -167,28 +174,32 @@ async def _stream_sse(
     full_answer = ""
     citations: list[dict] = []
 
-    intent = await classify_intent(query, trace_metadata)
-    if intent.intent != "knowledge" and intent.reply:
-        full_answer = intent.reply
-        yield _chunk(completion_id, {"content": full_answer})
-    else:
-        context, citations, rewritten = await prepare_context(query, trace_metadata)
-        if not context:
-            full_answer = "No relevant documents found for your query in the knowledge base."
+    try:
+        intent = await classify_intent(query, trace_metadata)
+        if intent.intent != "knowledge" and intent.reply:
+            full_answer = intent.reply
             yield _chunk(completion_id, {"content": full_answer})
         else:
-            chain = build_answer_chain()
-            stream_config = {
-                "run_name": "rag_answer_generation",
-                "tags": ["rag", "stage5"],
-                "metadata": trace_metadata or {},
-            }
-            async for token in chain.astream({"context": context, "question": rewritten}, config=stream_config):
-                if token:
-                    full_answer += token
-                    yield _chunk(completion_id, {"content": token})
+            context, citations, rewritten = await prepare_context(query, trace_metadata)
+            if not context:
+                full_answer = "No relevant documents found for your query in the knowledge base."
+                yield _chunk(completion_id, {"content": full_answer})
+            else:
+                chain = build_answer_chain()
+                stream_config = {
+                    "run_name": "rag_answer_generation",
+                    "tags": ["rag", "stage5"],
+                    "metadata": trace_metadata or {},
+                }
+                async for token in chain.astream({"context": context, "question": rewritten}, config=stream_config):
+                    if token:
+                        full_answer += token
+                        yield _chunk(completion_id, {"content": token})
 
-    message_id = await _persist_exchange(db, conversation, query, full_answer, citations)
+        message_id = await _persist_exchange(db, conversation, query, full_answer, citations)
+    except Exception:
+        logger.exception("Streaming chat failed: user_id=%s conversation_id=%s", trace_metadata.get("user_id") if trace_metadata else None, conversation.id)
+        raise
 
     yield _chunk(
         completion_id,
